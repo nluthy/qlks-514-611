@@ -8,7 +8,7 @@ using QLKS.DTO;
 
 namespace QLKS.DAO
 {
-    public class NguoiDungDAO: DataAccess
+    public class NguoiDungDAO : DataAccess
     {
         public static DataTable hienThiTatCaNguoiDung()
         {
@@ -20,7 +20,8 @@ namespace QLKS.DAO
                 link = KetNoi();
                 string chuoiLenh = "select * from NguoiDung order by TenDangNhap";
 
-                OleDbCommand command = connection.CreateCommand();
+
+                OleDbCommand command = link.CreateCommand();
                 command.CommandText = chuoiLenh;
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
                 adapter.SelectCommand = command;
@@ -45,8 +46,8 @@ namespace QLKS.DAO
             OleDbConnection link = null;
             NguoiDungDTO nguoidung = new NguoiDungDTO();
             //int ketQua = 0; // 0: Không tìm thấy người dùng có user name đó
-                            // 1: Đúng user name và mật khẩu
-                            //-1: Sai mật khẩu roài
+            // 1: Đúng user name và mật khẩu
+            //-1: Sai mật khẩu roài
             try
             {
                 link = KetNoi();
@@ -55,21 +56,31 @@ namespace QLKS.DAO
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbDataReader Doc = lenh.ExecuteReader();
 
-                if (!Doc.Read())
-                    return null;
+                //if (!Doc.Read())
+                //    return null;
+                //else
+                //{
+                //    while (Doc.Read())
+                //    {
+                //        nguoidung.TenDangNhap = Doc.GetString(0);
+                //        nguoidung.MatKhau = Doc.GetString(1);
+                //        nguoidung.Email = Doc.GetString(2);
+                //    }
+                //}
+                if (Doc.Read())
+                {
+                    nguoidung.TenDangNhap = Doc.GetString(0);
+                    nguoidung.MatKhau = Doc.GetString(1);
+                    nguoidung.Email = Doc.GetString(2);
+                }
                 else
                 {
-                    while (Doc.Read())
-                    {
-                        nguoidung.Id = Doc.GetString(0);
-                        nguoidung.TenDangNhap = Doc.GetString(1);
-                        nguoidung.MatKhau = Doc.GetString(2);
-                        nguoidung.Email = Doc.GetString(3);
-                    }
+                    return null;
                 }
             }
             catch (Exception ex)
             {
+                return null;
             }
             finally
             {
@@ -84,7 +95,8 @@ namespace QLKS.DAO
         {
             OleDbConnection link = null;
             NguoiDungDTO nguoiDung = new NguoiDungDTO();
-            int ketQua = 0; // 0: Không tìm thấy người dùng có user name đó
+            int ketQua = 0; 
+                            // 0: Không tìm thấy người dùng có user name đó
                             // 1: Đúng user name và mật khẩu
                             //-1: Sai mật khẩu roài
             try
@@ -139,8 +151,8 @@ namespace QLKS.DAO
         {
             OleDbConnection link = null;
             int ketQua = 0; // 0: Thêm thất bại
-                            // 1: Thêm thành công
-                            //-1: Đã tồn tại người dùng đó
+            // 1: Thêm thành công
+            //-1: Đã tồn tại người dùng đó
             NguoiDungDTO kiemTraNguoiDung = new NguoiDungDTO();
             kiemTraNguoiDung = timNguoiDung(nguoiDung.TenDangNhap);
 
@@ -167,16 +179,16 @@ namespace QLKS.DAO
                     OleDbDataAdapter Adapter = new OleDbDataAdapter();
                     Adapter.InsertCommand = lenh;
                 }
-            
-            catch (Exception ex)
-            {
-            }
-            
-            finally
-            {
-                if (link != null && link.State == System.Data.ConnectionState.Open)
-                    link.Close();
-            }
+
+                catch (Exception ex)
+                {
+                }
+
+                finally
+                {
+                    if (link != null && link.State == System.Data.ConnectionState.Open)
+                        link.Close();
+                }
 
             return ketQua;
         }
@@ -191,7 +203,7 @@ namespace QLKS.DAO
                 link = KetNoi();
                 string chuoiLenh = "delete from NguoiDung where TenNguoiDung = '" + tenNguoiDung + "'";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
-                
+
                 ketQua = lenh.ExecuteNonQuery();
             }
             catch
@@ -224,7 +236,7 @@ namespace QLKS.DAO
                 thamSo = new OleDbParameter("@Email", OleDbType.LongVarChar);
                 thamSo.Value = nguoiDung.Email;
                 lenh.Parameters.Add(thamSo);
-                
+
                 ketQua = lenh.ExecuteNonQuery();
                 OleDbDataAdapter Adapter = new OleDbDataAdapter();
                 Adapter.UpdateCommand = lenh;

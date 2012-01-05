@@ -6,7 +6,7 @@ using System.Data.OleDb;
 
 namespace QLKS.DAO
 {
-    class DataAccess
+    public class DataAccess
     {
         private static string chuoiKetNoi = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=QLKS.mdb";
         public static OleDbConnection KetNoi()

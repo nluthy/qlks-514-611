@@ -7,13 +7,7 @@ namespace QLKS.DTO
 {
     public class NguoiDungDTO
     {
-        private int id;
-
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        
 
         private string tenDangNhap;
 
@@ -39,6 +33,6 @@ namespace QLKS.DTO
             set { email = value; }
         }
 
-        NguoiDungDTO();
+        
     }
 }

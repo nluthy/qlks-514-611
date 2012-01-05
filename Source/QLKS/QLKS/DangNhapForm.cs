@@ -26,8 +26,8 @@ namespace QLKS
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            string tenDangNhap = txtTenDangNhap.Text.ToString();
-            string matKhau = txtMatKhau.Text.ToString();
+            string tenDangNhap = txtTenDangNhap.Text;
+            string matKhau = txtMatKhau.Text;
             int kiemTra = NguoiDungBUS.kiemTraDangNhap(tenDangNhap, matKhau);
 
             if (kiemTra == 1)
@@ -36,10 +36,11 @@ namespace QLKS
                 {
                     AdminForm form = new AdminForm();
                     form.Show();
-                    this.Close();
+                    this.Visible = false;
                 }
                 else
                 {
+                    MessageBox.Show("OK");
                 }
             }
             else if (kiemTra == 0)
