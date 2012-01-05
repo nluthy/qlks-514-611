@@ -46,7 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="HoaDonDAO.cs" />
+    <Compile Include="KhachHangDAO.cs" />
     <Compile Include="NguoiDungDAO.cs" />
+    <Compile Include="PhieuThueDAO.cs" />
+    <Compile Include="PhongDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
