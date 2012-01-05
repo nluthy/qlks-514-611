@@ -25,9 +25,10 @@ namespace QLKS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DangNhapForm form = new DangNhapForm();
-            if (form.Show() == DialogResult.OK)
+            
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new DangNhapForm());
+                Application.Run(new MainForm());
             }
         }
     }
