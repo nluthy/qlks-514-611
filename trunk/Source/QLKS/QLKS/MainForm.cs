@@ -15,5 +15,43 @@ namespace QLKS
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (Program.NguoiDung == "admin")
+            {
+                quảnLýChungToolStripMenuItem.Enabled = true;
+                btn_QuanLyChung.Enabled = true;
+            }
+        }
+
+        private void btn_QuanLyPhong_Click(object sender, EventArgs e)
+        {
+            panelQuanLyPhong.Visible = true;
+        }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_LamLai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSua_CapNhat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSua_Xoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        
     }
 }

@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using QLKS.DAO;
 
 namespace QLKS.BUS
 {
-    public class PHIEUTHUEBUS
+    public class PhieuThueBUS
     {
-        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KHACHHANG[] dsKH)
+        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO[] dsKH)
         {
-            return PHIEUTHUEDAO.ThemPhieu(MPT, MP, day, TT, dsKH);
+            return PhieuThueDAO.ThemPhieu(MPT, MP, day, TT, dsKH);
         }
-        public static List<PHIEUTHUE> layDSPT()
+        public static List<PhieuThueDTO> layDSPT()
         {
-            return PHIEUTHUEDAO.layDSPT();
+            return PhieuThueDAO.layDSPT();
         }
-        public static PHIEUTHUE layPT(string MPT)
+        public static PhieuThueDTO layPT(string MPT)
         {
-            return PHIEUTHUEDAO.layPT(MPT);
+            return PhieuThueDAO.layPT(MPT);
         }
         public static void CapNhat(string MPT, string TT)
         {
-            PHIEUTHUEDAO.CapNhat(MPT, TT);
+            PhieuThueDAO.CapNhat(MPT, TT);
         }
     }
 }

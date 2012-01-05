@@ -2,34 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using QLKS.DAO;
 
 namespace QLKS.BUS
 {
-    public class KHACHHANGBUS
+    public class KhachHangBUS
     {
-        public static List<KHACHHANG> LayDSKhach()
+        public static List<KhachHangDTO> LayDSKhach()
         {
-            return KHACHHANGDAO.LayDSKhach();
+            return KhachHangDAO.LayDSKhach();
         }
-        public static List<LOAIKHACH> LayDSLoaiKhach()
+        public static List<LoaiKhachDTO> LayDSLoaiKhach()
         {
-            return KHACHHANGDAO.LayDSLoaiKhach();
+            return KhachHangDAO.LayDSLoaiKhach();
         }
-        public static KHACHHANG LayKhach(string MKH)
+        public static KhachHangDTO LayKhach(string MKH)
         {
-            return KHACHHANGDAO.LayKhach(MKH);
+            return KhachHangDAO.LayKhach(MKH);
         }
         public static void ThemKhach(string MKH, string HT, int MLK, string DC, string GT, bool kihieu)
         {
-            KHACHHANGDAO.ThemKhach(MKH, HT, MLK, DC, GT, kihieu);
+            KhachHangDAO.ThemKhach(MKH, HT, MLK, DC, GT, kihieu);
         }
-        public static LOAIKHACH LaylKhach(int MLK)
+        public static LoaiKhachDTO LaylKhach(int MLK)
         {
-            return KHACHHANGDAO.LaylKhach(MLK);
+            return KhachHangDAO.LaylKhach(MLK);
         }
         public static void lKSuaThem(int MLK, string ten, int HS, string xoa, bool kihieu)
         {
-            KHACHHANGDAO.lKSuaThem(MLK, ten, HS, xoa, kihieu);
+            KhachHangDAO.lKSuaThem(MLK, ten, HS, xoa, kihieu);
         }
     }
 }

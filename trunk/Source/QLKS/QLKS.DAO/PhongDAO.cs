@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using System.Data.OleDb;
 
 namespace QLKS.DAO
 {
-    public class PHONGDAO : DataAccess
+    public class PhongDAO : DataAccess
     {
-        public static List<PHONG> LayDSPhong()
+        public static List<PhongDTO> LayDSPhong()
         {
             OleDbConnection link = null;
-            List<PHONG> dsPhong = new List<PHONG>();
+            List<PhongDTO> dsPhong = new List<PhongDTO>();
             try
             {
                 link = KetNoi();
@@ -21,10 +23,10 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    PHONG phg = new PHONG();
+                    PhongDTO phg = new PhongDTO();
                     phg.MaPhong = Doc.GetString(0);
                     phg.TenPhong = Doc.GetString(1);
-                    LOAIPHONG Loai = new LOAIPHONG();
+                    LoaiPhongDTO Loai = new LoaiPhongDTO();
                     Loai.MaLoaiPhong = Doc.GetInt32(2);
                     Loai.TenLoaiPhong = Doc.GetString(3);
                     Loai.SLKhachToiDa = Doc.GetInt32(4);
@@ -42,7 +44,7 @@ namespace QLKS.DAO
             }
             catch (Exception ex)
             {
-                dsPhong = new List<PHONG>();
+                dsPhong = new List<PhongDTO>();
             }
             finally
             {
@@ -51,10 +53,10 @@ namespace QLKS.DAO
             }
             return dsPhong;
         }
-        public static List<LOAIPHONG> LayDSLoaiPhong()
+        public static List<LoaiPhongDTO> LayDSLoaiPhong()
         {
             OleDbConnection link = null;
-            List<LOAIPHONG> dsPhong = new List<LOAIPHONG>();
+            List<LoaiPhongDTO> dsPhong = new List<LoaiPhongDTO>();
             try
             {
                 link = KetNoi();
@@ -63,7 +65,7 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    LOAIPHONG lphg = new LOAIPHONG();
+                    LoaiPhongDTO lphg = new LoaiPhongDTO();
                     lphg.MaLoaiPhong = Doc.GetInt32(0);
                     lphg.TenLoaiPhong = Doc.GetString(1);
                     lphg.DonGia = Doc.GetInt32(2);
@@ -74,7 +76,7 @@ namespace QLKS.DAO
             }
             catch (Exception ex)
             {
-                dsPhong = new List<LOAIPHONG>();
+                dsPhong = new List<LoaiPhongDTO>();
             }
             finally
             {
@@ -196,10 +198,10 @@ namespace QLKS.DAO
             }
         }
 
-        public static PHONG LayPhong(string MP)
+        public static PhongDTO LayPhong(string MP)
         {
             OleDbConnection link = null;
-            PHONG phg = new PHONG();
+            PhongDTO phg = new PhongDTO();
             try
             {
                 link = KetNoi();
@@ -214,7 +216,7 @@ namespace QLKS.DAO
                 {
                     phg.MaPhong = Doc.GetString(0);
                     phg.TenPhong = Doc.GetString(1);
-                    LOAIPHONG loai = new LOAIPHONG();
+                    LoaiPhongDTO loai = new LoaiPhongDTO();
                     loai.MaLoaiPhong = Doc.GetInt32(2);
                     loai.TenLoaiPhong = Doc.GetString(7);
                     loai.DonGia = Doc.GetInt32(8);
@@ -228,7 +230,7 @@ namespace QLKS.DAO
             }
             catch (Exception ex)
             {
-                phg = new PHONG();
+                phg = new PhongDTO();
             }
             finally
             {
@@ -270,10 +272,10 @@ namespace QLKS.DAO
             }
             return arr;
         }
-        public static LOAIPHONG LaylPhong(int MLP)
+        public static LoaiPhongDTO LaylPhong(int MLP)
         {
             OleDbConnection link = null;
-            LOAIPHONG lphg = new LOAIPHONG();
+            LoaiPhongDTO lphg = new LoaiPhongDTO();
             try
             {
                 link = KetNoi();

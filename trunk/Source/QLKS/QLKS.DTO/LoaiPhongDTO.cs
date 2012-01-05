@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QLKS.DTO
 {
-    public class LOAIPHONG
+    public class LoaiPhongDTO
     {
         private int maLoaiPhong;
 

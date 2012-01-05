@@ -7,55 +7,55 @@ using QLKS.DTO;
 
 namespace QLKS.BUS
 {
-    public class PHONGBUS
+    public class PhongBUS
     {
-        public static List<PHONG> LayDSPhong()
+        public static List<PhongDTO> LayDSPhong()
         {
-            return PHONGDAO.LayDSPhong();
+            return PhongDAO.LayDSPhong();
         }
-        public static List<LOAIPHONG> LayDSLoaiPhong()
+        public static List<LoaiPhongDTO> LayDSLoaiPhong()
         {
-            return PHONGDAO.LayDSLoaiPhong();
+            return PhongDAO.LayDSLoaiPhong();
         }
         public static void NhapPhong(string MP, string TP, int LP, string GC)
         {
-            PHONGDAO.NhapPhong(MP, TP, LP, GC);
+            PhongDAO.NhapPhong(MP, TP, LP, GC);
         }
         public static void XoaPhong(string MP)
         {
-            PHONGDAO.XoaPhong(MP);
+            PhongDAO.XoaPhong(MP);
         }
         public static void CapNhat(string MP, string TP, int LP, string GC, string TT, int SL)
         {
-            PHONGDAO.CapNhat(MP, TP, LP, GC, TT, SL);
+            PhongDAO.CapNhat(MP, TP, LP, GC, TT, SL);
         }
-        public static PHONG LayPhong(string MP)
+        public static PhongDTO LayPhong(string MP)
         {
-            return PHONGDAO.LayPhong(MP);
+            return PhongDAO.LayPhong(MP);
         }
         public static List<int> layDSTBThang(int thang)
         {
             List<int> arr = new List<int>();
-            arr = PHONGDAO.layDSTBThang(thang);
-            List<PHONG> dsphg = new List<PHONG>();
-            dsphg = PHONGDAO.LayDSPhong();
+            arr = PhongDAO.layDSTBThang(thang);
+            List<PhongDTO> dsphg = new List<PhongDTO>();
+            dsphg = PhongDAO.LayDSPhong();
             int temp = arr.Count;
             if (temp < dsphg.Count)
                 for (int i = 0; i < dsphg.Count - temp; i++)
                     arr.Add(0);
             return arr;
         }
-        public static LOAIPHONG LaylPhong(int MLP)
+        public static LoaiPhongDTO LaylPhong(int MLP)
         {
-            return PHONGDAO.LaylPhong(MLP);
+            return PhongDAO.LaylPhong(MLP);
         }
         public static void lPSuaThem(int MLP, string ten, int DG, int SL, string xoa, bool kihieu)
         {
-            PHONGDAO.lPSuaThem(MLP, ten, DG, SL, xoa, kihieu);
+            PhongDAO.lPSuaThem(MLP, ten, DG, SL, xoa, kihieu);
         }
-        public static void TimPhong(List<PHONG> temp, string maphong, string loaiphong, string tenphong, string tinhtrang)
+        public static void TimPhong(List<PhongDTO> temp, string maphong, string loaiphong, string tenphong, string tinhtrang)
         {
-            List<PHONG> dsPhong = PHONGBUS.LayDSPhong();
+            List<PhongDTO> dsPhong = PhongBUS.LayDSPhong();
             for (int i = 0; i < dsPhong.Count; ++i)
             {
                 if (KiemTraMaPhong(dsPhong[i], maphong) || maphong.Equals(""))
@@ -67,25 +67,25 @@ namespace QLKS.BUS
             }
         }
 
-        private static bool KiemTraMaPhong(PHONG phong, string maphong)
+        private static bool KiemTraMaPhong(PhongDTO phong, string maphong)
         {
             if (phong.MaPhong.Equals(maphong))
                 return true;
             return false;
         }
-        private static bool KiemTraLoaiPhong(PHONG phong, string loaiphong)
+        private static bool KiemTraLoaiPhong(PhongDTO phong, string loaiphong)
         {
             if (phong.LoaiPhong.TenLoaiPhong.Equals(loaiphong))
                 return true;
             return false;
         }
-        private static bool KiemTraTenPhong(PHONG phong, string tenphong)
+        private static bool KiemTraTenPhong(PhongDTO phong, string tenphong)
         {
             if (phong.TenPhong.Equals(tenphong))
                 return true;
             return false;
         }
-        private static bool KiemTraTinhTrang(PHONG phong, string tinhtrang)
+        private static bool KiemTraTinhTrang(PhongDTO phong, string tinhtrang)
         {
             if (phong.TinhTrang.Equals(tinhtrang))
                 return true;
@@ -93,9 +93,9 @@ namespace QLKS.BUS
         }
         public static int[] LapBaoCaoDoanhThu(int thang)
         {
-            List<HOADON> dsHD = new List<HOADON>();
-            dsHD = HOADONBUS.layDSHoaDon();
-            List<PHONG> dsphg = new List<PHONG>();
+            List<HoaDonDTO> dsHD = new List<HoaDonDTO>();
+            dsHD = HoaDonBUS.layDSHoaDon();
+            List<PhongDTO> dsphg = new List<PhongDTO>();
             dsphg = LayDSPhong();
             int[] arrDoanhThu = new int[dsphg.Count];
             for (int i = 0; i < dsHD.Count; i++)
@@ -108,7 +108,7 @@ namespace QLKS.BUS
             }
             for (int i = 0; i < dsHD.Count; i++)
             {
-                List<CHITIETHOADON> dsCT = new List<CHITIETHOADON>();
+                List<ChiTietHoaDonDTO> dsCT = new List<ChiTietHoaDonDTO>();
                 dsCT = dsHD[i].DsCTHD;
                 for (int j = 0; j < dsCT.Count; j++)
                 {
@@ -126,9 +126,9 @@ namespace QLKS.BUS
         }
         public static int[] LapBaoCaoMatDo(int thang)
         {
-            List<HOADON> dsHD = new List<HOADON>();
-            dsHD = HOADONBUS.layDSHoaDon();
-            List<PHONG> dsphg = new List<PHONG>();
+            List<HoaDonDTO> dsHD = new List<HoaDonDTO>();
+            dsHD = HoaDonBUS.layDSHoaDon();
+            List<PhongDTO> dsphg = new List<PhongDTO>();
             dsphg = LayDSPhong();
             int[] arrNgayThue = new int[dsphg.Count];
             for (int i = 0; i < dsHD.Count; i++)
@@ -141,7 +141,7 @@ namespace QLKS.BUS
             }
             for (int i = 0; i < dsHD.Count; i++)
             {
-                List<CHITIETHOADON> dsCT = new List<CHITIETHOADON>();
+                List<ChiTietHoaDonDTO> dsCT = new List<ChiTietHoaDonDTO>();
                 dsCT = dsHD[i].DsCTHD;
                 for (int j = 0; j < dsCT.Count; j++)
                 {

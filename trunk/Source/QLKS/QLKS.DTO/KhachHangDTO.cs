@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QLKS.DTO
 {
-    public class KHACHHANG
+    public class KhachHangDTO
     {
         private string maKH;
 
@@ -21,9 +21,9 @@ namespace QLKS.DTO
             get { return hoTen; }
             set { hoTen = value; }
         }
-        private LOAIKHACH loaiKhach;
+        private LoaiKhachDTO loaiKhach;
 
-        public LOAIKHACH LoaiKhach
+        public LoaiKhachDTO LoaiKhach
         {
             get { return loaiKhach; }
             set { loaiKhach = value; }
