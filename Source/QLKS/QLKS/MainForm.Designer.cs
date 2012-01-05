@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Quản lý phòng");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Cho thuê phòng");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Thống kê");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quản lý chung");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Hướng dẫn");
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.quảnLýPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.choThuêPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +53,15 @@
             this.trToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView = new System.Windows.Forms.ListView();
+            this.panelQuanLyPhong = new System.Windows.Forms.Panel();
+            this.tabCon_QuanLyPhong = new System.Windows.Forms.TabControl();
+            this.tabPage_ThemPhong = new System.Windows.Forms.TabPage();
+            this.tabPage_CapNhatPhong = new System.Windows.Forms.TabPage();
+            this.tabPage_XoaPhong = new System.Windows.Forms.TabPage();
             this.menuMain.SuspendLayout();
+            this.panelQuanLyPhong.SuspendLayout();
+            this.tabCon_QuanLyPhong.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuMain
@@ -198,17 +211,88 @@
             this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
+            // listView
+            // 
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
+            this.listView.Location = new System.Drawing.Point(5, 27);
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(121, 384);
+            this.listView.TabIndex = 1;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            // 
+            // panelQuanLyPhong
+            // 
+            this.panelQuanLyPhong.Controls.Add(this.tabCon_QuanLyPhong);
+            this.panelQuanLyPhong.Location = new System.Drawing.Point(128, 28);
+            this.panelQuanLyPhong.Name = "panelQuanLyPhong";
+            this.panelQuanLyPhong.Size = new System.Drawing.Size(699, 383);
+            this.panelQuanLyPhong.TabIndex = 2;
+            // 
+            // tabCon_QuanLyPhong
+            // 
+            this.tabCon_QuanLyPhong.Controls.Add(this.tabPage_ThemPhong);
+            this.tabCon_QuanLyPhong.Controls.Add(this.tabPage_CapNhatPhong);
+            this.tabCon_QuanLyPhong.Controls.Add(this.tabPage_XoaPhong);
+            this.tabCon_QuanLyPhong.Location = new System.Drawing.Point(0, -1);
+            this.tabCon_QuanLyPhong.Name = "tabCon_QuanLyPhong";
+            this.tabCon_QuanLyPhong.SelectedIndex = 0;
+            this.tabCon_QuanLyPhong.Size = new System.Drawing.Size(696, 381);
+            this.tabCon_QuanLyPhong.TabIndex = 0;
+            // 
+            // tabPage_ThemPhong
+            // 
+            this.tabPage_ThemPhong.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_ThemPhong.Name = "tabPage_ThemPhong";
+            this.tabPage_ThemPhong.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_ThemPhong.Size = new System.Drawing.Size(688, 355);
+            this.tabPage_ThemPhong.TabIndex = 0;
+            this.tabPage_ThemPhong.Text = "Thêm phòng mới";
+            this.tabPage_ThemPhong.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_CapNhatPhong
+            // 
+            this.tabPage_CapNhatPhong.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_CapNhatPhong.Name = "tabPage_CapNhatPhong";
+            this.tabPage_CapNhatPhong.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_CapNhatPhong.Size = new System.Drawing.Size(688, 355);
+            this.tabPage_CapNhatPhong.TabIndex = 1;
+            this.tabPage_CapNhatPhong.Text = "Cập nhật phòng";
+            this.tabPage_CapNhatPhong.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_XoaPhong
+            // 
+            this.tabPage_XoaPhong.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_XoaPhong.Name = "tabPage_XoaPhong";
+            this.tabPage_XoaPhong.Size = new System.Drawing.Size(688, 355);
+            this.tabPage_XoaPhong.TabIndex = 2;
+            this.tabPage_XoaPhong.Text = "Xóa phòng";
+            this.tabPage_XoaPhong.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 364);
+            this.ClientSize = new System.Drawing.Size(839, 412);
+            this.Controls.Add(this.panelQuanLyPhong);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.menuMain);
             this.MainMenuStrip = this.menuMain;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Quản lý khách sạn";
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
+            this.panelQuanLyPhong.ResumeLayout(false);
+            this.tabCon_QuanLyPhong.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +320,11 @@
         private System.Windows.Forms.ToolStripMenuItem trToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kháchHàngToolStripMenuItem;
+        private System.Windows.Forms.ListView listView;
+        private System.Windows.Forms.Panel panelQuanLyPhong;
+        private System.Windows.Forms.TabControl tabCon_QuanLyPhong;
+        private System.Windows.Forms.TabPage tabPage_ThemPhong;
+        private System.Windows.Forms.TabPage tabPage_CapNhatPhong;
+        private System.Windows.Forms.TabPage tabPage_XoaPhong;
     }
 }
