@@ -1,0 +1,16 @@
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\ResolveAssemblyReference.cache
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.AdminForm.resources
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.DangNhapForm.resources
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.Cache
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.exe
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.pdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.BUS.dll
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.DTO.dll
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.DAO.dll
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.DAO.pdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.DTO.pdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.BUS.pdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.exe
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.pdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.mdb
