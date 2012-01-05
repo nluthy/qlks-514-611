@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using QLKS.DTO;
 
 namespace QLKS
 {
     static class Program
     {
+        private static String nguoiDung;
+
+        public static String NguoiDung
+        {
+            get { return Program.nguoiDung; }
+            set { Program.nguoiDung = value; }
+        }
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,7 +24,11 @@ namespace QLKS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DangNhapForm());
+            DangNhapForm form = new DangNhapForm();
+            if (form.Show() == DialogResult.OK)
+            {
+                Application.Run(new DangNhapForm());
+            }
         }
     }
 }

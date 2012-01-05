@@ -32,16 +32,9 @@ namespace QLKS
 
             if (kiemTra == 1)
             {
-                if (tenDangNhap.Equals("admin"))
-                {
-                    AdminForm form = new AdminForm();
-                    form.Show();
-                    this.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("OK");
-                }
+                this.DialogResult = DialogResult.OK;
+                Program.NguoiDung = tenDangNhap;
+                this.Close();
             }
             else if (kiemTra == 0)
                 MessageBox.Show("Tên đăng nhập không tồn tại", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Error);
