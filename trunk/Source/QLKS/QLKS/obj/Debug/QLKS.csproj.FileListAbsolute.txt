@@ -14,3 +14,4 @@ F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProjec
 F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.exe
 F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.pdb
 F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\bin\Debug\QLKS.mdb
+F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS\obj\Debug\QLKS.MainForm.resources
