@@ -5,11 +5,11 @@ using System.Text;
 
 namespace QLKS.DTO
 {
-    public class CHITIETHOADON
+    public class ChiTietHoaDonDTO
     {
-        private PHIEUTHUE phieuthue;
+        private PhieuThueDTO phieuthue;
 
-        public PHIEUTHUE Phieuthue
+        public PhieuThueDTO Phieuthue
         {
             get { return phieuthue; }
             set { phieuthue = value; }

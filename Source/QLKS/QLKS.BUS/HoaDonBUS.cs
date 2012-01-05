@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using QLKS.DAO;
 
 namespace QLKS.BUS
 {
-    public class HOADONBUS
+    public class HoaDonBUS
     {
-        public static List<HOADON> layDSHoaDon()
+        public static List<HoaDonDTO> layDSHoaDon()
         {
-            return HOADONDAO.layDSHoaDon();
+            return HoaDonDAO.layDSHoaDon();
         }
-        public static void themHD(string MHD, string MKH, DateTime ngayTT, int tien, List<CHITIETHOADON> arrHD)
+        public static void themHD(string MHD, string MKH, DateTime ngayTT, int tien, List<ChiTietHoaDonDTO> arrHD)
         {
-            HOADONDAO.themHD(MHD, MKH, ngayTT, tien, arrHD);
+            HoaDonDAO.themHD(MHD, MKH, ngayTT, tien, arrHD);
         }
-        public static List<CHITIETHOADON> layCTHD(string MHD)
+        public static List<ChiTietHoaDonDTO> layCTHD(string MHD)
         {
-            return HOADONDAO.layCTHD(MHD);
+            return HoaDonDAO.layCTHD(MHD);
         }
     }
 }

@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using System.Data.OleDb;
 
 namespace QLKS.DAO
 {
-    public class KHACHHANGDAO : DataAccess
+    public class KhachHangDAO : DataAccess
     {
-        public static List<KHACHHANG> LayDSKhach()
+        public static List<KhachHangDTO> LayDSKhach()
         {
             OleDbConnection link = null;
-            List<KHACHHANG> dsKH = new List<KHACHHANG>();
+            List<KhachHangDTO> dsKH = new List<KhachHangDTO>();
             try
             {
                 link = KetNoi();
@@ -21,10 +23,10 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    KHACHHANG kh = new KHACHHANG();
+                    KhachHangDTO kh = new KhachHangDTO();
                     kh.MaKH = Doc.GetString(0);//1 MAKH 2 ten 3... 4 Diachi 5.so giay to
                     kh.HoTen = Doc.GetString(1);//7.ten loai
-                    LOAIKHACH loai = new LOAIKHACH();
+                    LoaiKhachDTO loai = new LoaiKhachDTO();
                     loai.MaLoaiKH = Doc.GetInt16(2);
                     loai.TenLoaiKH = Doc.GetString(6);
                     loai.HeSo = Doc.GetInt16(7);
@@ -36,7 +38,7 @@ namespace QLKS.DAO
             }
             catch (Exception ex)
             {
-                dsKH = new List<KHACHHANG>();
+                dsKH = new List<KhachHangDTO>();
             }
             finally
             {
@@ -45,10 +47,10 @@ namespace QLKS.DAO
             }
             return dsKH;
         }
-        public static List<LOAIKHACH> LayDSLoaiKhach()
+        public static List<LoaiKhachDTO> LayDSLoaiKhach()
         {
             OleDbConnection link = null;
-            List<LOAIKHACH> ds = new List<LOAIKHACH>();
+            List<LoaiKhachDTO> ds = new List<LoaiKhachDTO>();
             try
             {
                 link = KetNoi();
@@ -57,7 +59,7 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    LOAIKHACH lphg = new LOAIKHACH();
+                    LoaiKhachDTO lphg = new LoaiKhachDTO();
                     lphg.MaLoaiKH = Doc.GetInt16(0);
                     lphg.TenLoaiKH = Doc.GetString(1);
                     lphg.HeSo = Doc.GetInt16(2);
@@ -67,7 +69,7 @@ namespace QLKS.DAO
             }
             catch (Exception ex)
             {
-                ds = new List<LOAIKHACH>();
+                ds = new List<LoaiKhachDTO>();
             }
             finally
             {
@@ -76,10 +78,10 @@ namespace QLKS.DAO
             }
             return ds;
         }
-        public static KHACHHANG LayKhach(string MKH)
+        public static KhachHangDTO LayKhach(string MKH)
         {
             OleDbConnection link = null;
-            KHACHHANG kh = new KHACHHANG();
+            KhachHangDTO kh = new KhachHangDTO();
             try
             {
                 link = KetNoi();
@@ -93,7 +95,7 @@ namespace QLKS.DAO
                 Doc.Read();
                 kh.MaKH = Doc.GetString(0);
                 kh.HoTen = Doc.GetString(1);
-                LOAIKHACH loai = new LOAIKHACH();
+                LoaiKhachDTO loai = new LoaiKhachDTO();
                 loai.MaLoaiKH = Doc.GetInt16(2);
                 loai.TenLoaiKH = Doc.GetString(6);
                 loai.HeSo = Doc.GetInt16(7);
@@ -157,10 +159,10 @@ namespace QLKS.DAO
             }
 
         }
-        public static LOAIKHACH LaylKhach(int MLK)
+        public static LoaiKhachDTO LaylKhach(int MLK)
         {
             OleDbConnection link = null;
-            LOAIKHACH LK = new LOAIKHACH();
+            LoaiKhachDTO LK = new LoaiKhachDTO();
             try
             {
                 link = KetNoi();

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QLKS.DTO;
+using System.Data.OleDb;
 
 namespace QLKS.DAO
 {
-    public class PHIEUTHUEDAO : DataAccess
+    public class PhieuThueDAO : DataAccess
     {
-        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KHACHHANG[] dsKH)
+        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO[] dsKH)
         {
             OleDbConnection link = null;
             try
@@ -40,7 +42,7 @@ namespace QLKS.DAO
                 //  if (kihieu == true) 
                 Adapter.InsertCommand = lenh;
                 //  else Adapter.UpdateCommand = lenh;
-                int dem = dsKH.Count<KHACHHANG>();
+                int dem = dsKH.Count<KhachHangDTO>();
                 for (int i = 0; i < dem; i++)
                     ThemCTPT(MPT, dsKH[i].MaKH);
             }
@@ -83,10 +85,10 @@ namespace QLKS.DAO
                     link.Close();
             }
         }
-        public static List<PHIEUTHUE> layDSPT()
+        public static List<PhieuThueDTO> layDSPT()
         {
             OleDbConnection link = null;
-            List<PHIEUTHUE> dsPhieu = new List<PHIEUTHUE>();
+            List<PhieuThueDTO> dsPhieu = new List<PhieuThueDTO>();
             try
             {
                 link = KetNoi();
@@ -96,18 +98,18 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    PHIEUTHUE phieu = new PHIEUTHUE();
+                    PhieuThueDTO phieu = new PhieuThueDTO();
                     phieu.MaPhieuThue = Doc.GetString(0);
                     phieu.NgayThue = Doc.GetDateTime(2);
                     phieu.TienDV = Doc.GetInt32(3);
                     phieu.DaThanhToan = Doc.GetString(4);
-                    PHONG phg = new PHONG();
+                    PhongDTO phg = new PhongDTO();
                     phg.MaPhong = Doc.GetString(5);
                     phg.TenPhong = Doc.GetString(6);
                     phg.GhiChu = Doc.GetString(8);
                     phg.TinhTrang = Doc.GetString(9);
                     phg.SLKhach = Doc.GetInt32(10);
-                    LOAIPHONG loai = new LOAIPHONG();
+                    LoaiPhongDTO loai = new LoaiPhongDTO();
                     loai.MaLoaiPhong = Doc.GetInt32(11);
                     loai.TenLoaiPhong = Doc.GetString(12);
                     loai.DonGia = Doc.GetInt32(13);
@@ -118,14 +120,14 @@ namespace QLKS.DAO
                 }
                 for (int i = 0; i < dsPhieu.Count; i++)
                 {
-                    List<KHACHHANG> dskh = new List<KHACHHANG>();
-                    dskh = PHIEUTHUEDAO.NhapDSKhach(dsPhieu[i].MaPhieuThue);
+                    List<KhachHangDTO> dskh = new List<KhachHangDTO>();
+                    dskh = PhieuThueDAO.NhapDSKhach(dsPhieu[i].MaPhieuThue);
                     dsPhieu[i].DsKH = dskh;
                 }
             }
             catch (Exception ex)
             {
-                dsPhieu = new List<PHIEUTHUE>();
+                dsPhieu = new List<PhieuThueDTO>();
             }
             finally
             {
@@ -134,10 +136,10 @@ namespace QLKS.DAO
             }
             return dsPhieu;
         }
-        private static List<KHACHHANG> NhapDSKhach(string maphieu)
+        private static List<KhachHangDTO> NhapDSKhach(string maphieu)
         {
             OleDbConnection link = null;
-            List<KHACHHANG> dsk = new List<KHACHHANG>();
+            List<KhachHangDTO> dsk = new List<KhachHangDTO>();
             try
             {
                 link = KetNoi();
@@ -149,14 +151,14 @@ namespace QLKS.DAO
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
                 {
-                    KHACHHANG kh = new KHACHHANG();
-                    kh = KHACHHANGDAO.LayKhach(Doc.GetString(1));
+                    KhachHangDTO kh = new KhachHangDTO();
+                    kh = KhachHangDAO.LayKhach(Doc.GetString(1));
                     dsk.Add(kh);
                 }
             }
             catch
             {
-                dsk = new List<KHACHHANG>();
+                dsk = new List<KhachHangDTO>();
             }
             finally
             {
@@ -165,10 +167,10 @@ namespace QLKS.DAO
             }
             return dsk;
         }
-        public static PHIEUTHUE layPT(string MPT)
+        public static PhieuThueDTO layPT(string MPT)
         {
             OleDbConnection link = null;
-            PHIEUTHUE Phieu = new PHIEUTHUE();
+            PhieuThueDTO Phieu = new PhieuThueDTO();
             try
             {
                 link = KetNoi();
@@ -185,13 +187,13 @@ namespace QLKS.DAO
                 Phieu.NgayThue = Doc.GetDateTime(2);
                 Phieu.TienDV = Doc.GetInt32(3);
                 Phieu.DaThanhToan = Doc.GetString(4);
-                PHONG phg = new PHONG();
+                PhongDTO phg = new PhongDTO();
                 phg.MaPhong = Doc.GetString(5);
                 phg.TenPhong = Doc.GetString(6);
                 phg.GhiChu = Doc.GetString(8);
                 phg.TinhTrang = Doc.GetString(9);
                 phg.SLKhach = Doc.GetInt32(10);
-                LOAIPHONG loai = new LOAIPHONG();
+                LoaiPhongDTO loai = new LoaiPhongDTO();
                 loai.MaLoaiPhong = Doc.GetInt32(11);
                 loai.TenLoaiPhong = Doc.GetString(12);
                 loai.DonGia = Doc.GetInt32(13);
@@ -199,14 +201,14 @@ namespace QLKS.DAO
                 phg.LoaiPhong = loai;
                 Phieu.Phong = phg;
 
-                List<KHACHHANG> dskh = new List<KHACHHANG>();
-                dskh = PHIEUTHUEDAO.NhapDSKhach(Phieu.MaPhieuThue);
+                List<KhachHangDTO> dskh = new List<KhachHangDTO>();
+                dskh = PhieuThueDAO.NhapDSKhach(Phieu.MaPhieuThue);
                 Phieu.DsKH = dskh;
 
             }
             catch (Exception ex)
             {
-                Phieu = new PHIEUTHUE();
+                Phieu = new PhieuThueDTO();
             }
             finally
             {
