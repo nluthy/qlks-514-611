@@ -87,6 +87,10 @@ namespace QLKS
         {
         }
 
+        private void dgvSua_DSPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
         private void cbSua_TinhTrangPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
@@ -192,6 +196,10 @@ namespace QLKS
         {
         }
 
+        private void dgvQuanLyNguoiDung_DanhSachNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
 
 
 
@@ -235,6 +243,16 @@ namespace QLKS
             panelThongKe.Visible = false;
             panelQuanLyPhong.Visible = false;
             panelChoThuePhong.Visible = true;
+            List<PhongDTO> dsPhong = PhongBUS.LayDSPhong();
+            List<PhongDTO> dsPhongTrong = new List<PhongDTO>();
+            foreach (PhongDTO phg in dsPhong)
+            {
+                if (phg.TinhTrang.Equals("Trống"))
+                {
+                    dsPhongTrong.Add(phg);
+                }
+            }
+            dgvChonPhong_DSPhongTrong.DataSource = dsPhongTrong;
         }
 
         private void btn_ThongKe_Click(object sender, EventArgs e)
@@ -262,6 +280,7 @@ namespace QLKS
             panelThongKe.Visible = false;
             panelTraCuu.Visible = false;
             panelQuanLyChung.Visible = true;
+            dgvQuanLyNguoiDung_DanhSachNguoiDung.DataSource = NguoiDungBUS.hienThiTatCaNguoiDung();
         }
 
         #endregion

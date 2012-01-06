@@ -174,7 +174,7 @@
             this.btnQuanLyNguoiDung_LamLai = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung_Sua = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung_ThemMoi = new System.Windows.Forms.Button();
-            this.dgvDanhSachNguoiDung = new System.Windows.Forms.DataGridView();
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung = new System.Windows.Forms.DataGridView();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTenDangNhap = new System.Windows.Forms.TextBox();
@@ -214,7 +214,7 @@
             this.panelQuanLyChung.SuspendLayout();
             this.tabCon_QuanLyChung.SuspendLayout();
             this.tabPageQuanLyNguoidung.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNguoiDung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuanLyNguoiDung_DanhSachNguoiDung)).BeginInit();
             this.SuspendLayout();
             // 
             // menuMain
@@ -434,6 +434,7 @@
             this.dgv_DSPhong.Name = "dgv_DSPhong";
             this.dgv_DSPhong.Size = new System.Drawing.Size(570, 150);
             this.dgv_DSPhong.TabIndex = 12;
+            this.dgv_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // cb_TinhTrangPhong
             // 
@@ -559,8 +560,7 @@
             this.tabPage_CapNhatPhong.TabIndex = 1;
             this.tabPage_CapNhatPhong.Text = "Cập nhật phòng";
             this.tabPage_CapNhatPhong.UseVisualStyleBackColor = true;
-            
-            this.tabPage_CapNhatPhong.Enter +=new System.EventHandler(tabPage_CapNhatPhong_Enter);
+            this.tabPage_CapNhatPhong.Enter += new System.EventHandler(this.tabPage_CapNhatPhong_Enter);
             // 
             // btnSua_CapNhat
             // 
@@ -589,6 +589,8 @@
             this.dgvSua_DSPhong.Name = "dgvSua_DSPhong";
             this.dgvSua_DSPhong.Size = new System.Drawing.Size(570, 150);
             this.dgvSua_DSPhong.TabIndex = 27;
+            this.dgvSua_DSPhong.CellContentClick +=new System.Windows.Forms.DataGridViewCellEventHandler(dgvSua_DSPhong_CellContentClick);
+            this.dgvSua_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // cbSua_TinhTrangPhong
             // 
@@ -749,6 +751,7 @@
             this.dgvChonPhong_DSPhongTrong.Name = "dgvChonPhong_DSPhongTrong";
             this.dgvChonPhong_DSPhongTrong.Size = new System.Drawing.Size(702, 239);
             this.dgvChonPhong_DSPhongTrong.TabIndex = 0;
+            this.dgvChonPhong_DSPhongTrong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // tabPageLapHoaDon
             // 
@@ -1034,6 +1037,7 @@
             this.dgv_MatDoSudung.Name = "dgv_MatDoSudung";
             this.dgv_MatDoSudung.Size = new System.Drawing.Size(647, 252);
             this.dgv_MatDoSudung.TabIndex = 3;
+            this.dgv_MatDoSudung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // stt
             // 
@@ -1128,6 +1132,7 @@
             this.dgvDoanhThu.Name = "dgvDoanhThu";
             this.dgvDoanhThu.Size = new System.Drawing.Size(647, 156);
             this.dgvDoanhThu.TabIndex = 7;
+            this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1224,6 +1229,7 @@
             this.dgv_TraCuuPhong.Name = "dgv_TraCuuPhong";
             this.dgv_TraCuuPhong.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuPhong.TabIndex = 10;
+            this.dgv_TraCuuPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btbTraCuuPhong_Tim
             // 
@@ -1344,6 +1350,7 @@
             this.dgv_TraCuuHoaDon.Name = "dgv_TraCuuHoaDon";
             this.dgv_TraCuuHoaDon.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuHoaDon.TabIndex = 20;
+            this.dgv_TraCuuHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btnTraCuuHD_Tim
             // 
@@ -1445,6 +1452,7 @@
             this.dgv_TraCuuKH.Name = "dgv_TraCuuKH";
             this.dgv_TraCuuKH.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuKH.TabIndex = 30;
+            this.dgv_TraCuuKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btnTraCuuKH_Tim
             // 
@@ -1531,7 +1539,7 @@
             this.tabPageQuanLyNguoidung.Controls.Add(this.btnQuanLyNguoiDung_LamLai);
             this.tabPageQuanLyNguoidung.Controls.Add(this.btnQuanLyNguoiDung_Sua);
             this.tabPageQuanLyNguoidung.Controls.Add(this.btnQuanLyNguoiDung_ThemMoi);
-            this.tabPageQuanLyNguoidung.Controls.Add(this.dgvDanhSachNguoiDung);
+            this.tabPageQuanLyNguoidung.Controls.Add(this.dgvQuanLyNguoiDung_DanhSachNguoiDung);
             this.tabPageQuanLyNguoidung.Controls.Add(this.txtMatKhau);
             this.tabPageQuanLyNguoidung.Controls.Add(this.txtEmail);
             this.tabPageQuanLyNguoidung.Controls.Add(this.txtTenDangNhap);
@@ -1576,13 +1584,16 @@
             this.btnQuanLyNguoiDung_ThemMoi.UseVisualStyleBackColor = true;
             this.btnQuanLyNguoiDung_ThemMoi.Click += new System.EventHandler(this.btnQuanLyNguoiDung_ThemMoi_Click);
             // 
-            // dgvDanhSachNguoiDung
+            // dgvQuanLyNguoiDung_DanhSachNguoiDung
             // 
-            this.dgvDanhSachNguoiDung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDanhSachNguoiDung.Location = new System.Drawing.Point(103, 184);
-            this.dgvDanhSachNguoiDung.Name = "dgvDanhSachNguoiDung";
-            this.dgvDanhSachNguoiDung.Size = new System.Drawing.Size(510, 150);
-            this.dgvDanhSachNguoiDung.TabIndex = 16;
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.Location = new System.Drawing.Point(103, 184);
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.Name = "dgvQuanLyNguoiDung_DanhSachNguoiDung";
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.Size = new System.Drawing.Size(510, 150);
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.TabIndex = 16;
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(dgvQuanLyNguoiDung_DanhSachNguoiDung_CellContentClick);
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // txtMatKhau
             // 
@@ -1710,7 +1721,7 @@
             this.tabCon_QuanLyChung.ResumeLayout(false);
             this.tabPageQuanLyNguoidung.ResumeLayout(false);
             this.tabPageQuanLyNguoidung.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNguoiDung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuanLyNguoiDung_DanhSachNguoiDung)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1866,7 +1877,7 @@
         private System.Windows.Forms.Button btnQuanLyNguoiDung_LamLai;
         private System.Windows.Forms.Button btnQuanLyNguoiDung_Sua;
         private System.Windows.Forms.Button btnQuanLyNguoiDung_ThemMoi;
-        private System.Windows.Forms.DataGridView dgvDanhSachNguoiDung;
+        private System.Windows.Forms.DataGridView dgvQuanLyNguoiDung_DanhSachNguoiDung;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTenDangNhap;

@@ -90,11 +90,11 @@
             this.txtMatKhau.Size = new System.Drawing.Size(248, 20);
             this.txtMatKhau.TabIndex = 5;
             // 
-            // dgvDanhSachNguoiDung
+            // dgvQuanLyNguoiDung_DanhSachNguoiDung
             // 
             this.dgvDanhSachNguoiDung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachNguoiDung.Location = new System.Drawing.Point(12, 193);
-            this.dgvDanhSachNguoiDung.Name = "dgvDanhSachNguoiDung";
+            this.dgvDanhSachNguoiDung.Name = "dgvQuanLyNguoiDung_DanhSachNguoiDung";
             this.dgvDanhSachNguoiDung.Size = new System.Drawing.Size(510, 150);
             this.dgvDanhSachNguoiDung.TabIndex = 6;
             // 
