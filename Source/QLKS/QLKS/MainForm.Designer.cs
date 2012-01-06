@@ -311,7 +311,7 @@
             // trToolStripMenuItem
             // 
             this.trToolStripMenuItem.Name = "trToolStripMenuItem";
-            this.trToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.trToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.trToolStripMenuItem.Text = "Phòng";
             this.trToolStripMenuItem.Click += new System.EventHandler(this.trToolStripMenuItem_Click);
             // 
@@ -559,6 +559,8 @@
             this.tabPage_CapNhatPhong.TabIndex = 1;
             this.tabPage_CapNhatPhong.Text = "Cập nhật phòng";
             this.tabPage_CapNhatPhong.UseVisualStyleBackColor = true;
+            
+            this.tabPage_CapNhatPhong.Enter +=new System.EventHandler(tabPage_CapNhatPhong_Enter);
             // 
             // btnSua_CapNhat
             // 
@@ -1507,7 +1509,7 @@
             // panelQuanLyChung
             // 
             this.panelQuanLyChung.Controls.Add(this.tabCon_QuanLyChung);
-            this.panelQuanLyChung.Location = new System.Drawing.Point(127, 32);
+            this.panelQuanLyChung.Location = new System.Drawing.Point(131, 32);
             this.panelQuanLyChung.Name = "panelQuanLyChung";
             this.panelQuanLyChung.Size = new System.Drawing.Size(727, 376);
             this.panelQuanLyChung.TabIndex = 33;

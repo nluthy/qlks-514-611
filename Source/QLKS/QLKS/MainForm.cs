@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using QLKS.DTO;
+using QLKS.BUS;
 
 namespace QLKS
 {
@@ -33,6 +35,32 @@ namespace QLKS
         //
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            if (tb_MaPhong.TextLength > 0)
+            {
+                String maPhong = tb_MaPhong.Text;
+                PhongDTO phong = PhongBUS.LayPhong(maPhong);
+                if (phong.GhiChu.Equals("Phong khong ton tai"))
+                {
+                    try
+                    {
+                        PhongBUS.NhapPhong(maPhong, tb_TenPhong.Text, Int32.Parse(cb_MaLoaiPhong.SelectedItem.ToString()), tb_GhiChu.Text, cb_TinhTrangPhong.SelectedItem.ToString());
+                        MessageBox.Show("Thêm phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgv_DSPhong.DataSource = PhongBUS.LayDSPhong();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Thêm phòng thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã phòng đã tồn tại\nVui lòng nhập mã phòng khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập mã phòng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_LamLai_Click(object sender, EventArgs e)
@@ -65,6 +93,13 @@ namespace QLKS
 
         private void cbSua_MaLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        
+
+        private void tabPage_CapNhatPhong_Enter(object sender, EventArgs e)
+        {
+            dgvSua_DSPhong.DataSource = PhongBUS.LayDSPhong();
         }
 
         //
@@ -161,6 +196,8 @@ namespace QLKS
 
 
         #region Panel chức năng (xong rồi, không sửa nữa)
+        //
+        //
         private void btn_QuanLyPhong_Click(object sender, EventArgs e)
         {
             panelQuanLyChung.Visible = false;
@@ -168,6 +205,27 @@ namespace QLKS
             panelThongKe.Visible = false;
             panelChoThuePhong.Visible = false;
             panelQuanLyPhong.Visible = true;
+            List<LoaiPhongDTO> dsLoaiPhong = PhongBUS.LayDSLoaiPhong();
+            foreach (LoaiPhongDTO loaiPhong in dsLoaiPhong)
+            {
+                cb_MaLoaiPhong.Items.Add(loaiPhong.MaLoaiPhong.ToString());
+            }
+            cb_MaLoaiPhong.SelectedIndex = 0;
+            cb_TinhTrangPhong.Items.Add("Trống");
+            cb_TinhTrangPhong.Items.Add("Có người");
+            cb_TinhTrangPhong.SelectedIndex = 0;
+
+            foreach (LoaiPhongDTO loaiPhong in dsLoaiPhong)
+            {
+                cbSua_MaLoaiPhong.Items.Add(loaiPhong.MaLoaiPhong.ToString());
+            }
+            cbSua_MaLoaiPhong.SelectedIndex = 0;
+            cbSua_TinhTrangPhong.Items.Add("Trống");
+            cbSua_TinhTrangPhong.Items.Add("Có người");
+            cbSua_TinhTrangPhong.SelectedIndex = 0;
+
+            dgv_DSPhong.DataSource = PhongBUS.LayDSPhong();
+           
         }
 
         private void btn_ChoThuePhong_Click(object sender, EventArgs e)
@@ -208,6 +266,7 @@ namespace QLKS
 
         #endregion
 
+        #region Các sự kiện menu
         private void thêmPhòngMớiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btn_QuanLyPhong_Click(sender, e);
@@ -232,7 +291,7 @@ namespace QLKS
         {
             btn_QuanLyChung_Click(sender, e);
         }
-
+        #endregion
 
 
 
