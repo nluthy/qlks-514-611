@@ -66,6 +66,7 @@ namespace QLKS
         private void btn_LamLai_Click(object sender, EventArgs e)
         {
             tb_MaPhong.Text = tb_SoLuongKhach.Text = tb_GhiChu.Text = tb_TenPhong.Text = "";
+            tbSua_MaPhong.ReadOnly = false;
         }
 
         private void cb_TinhTrangPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,14 +82,97 @@ namespace QLKS
         //
         private void btnSua_CapNhat_Click(object sender, EventArgs e)
         {
+            string maPhong = dgvSua_DSPhong.SelectedRows[0].Cells[0].Value.ToString();
+            PhongDTO phg = new PhongDTO();
+
+            if (tbSua_MaPhong.TextLength > 0 && tbSua_TenPhong.TextLength > 0 && tbSua_GhiChu.TextLength > 0)
+            {
+                //Lấy các thông tin đã sửa từ các textbox và combobox
+                string TP = tbSua_TenPhong.Text.Trim();
+                int LP = int.Parse(cb_MaLoaiPhong.Text.Trim());
+                string GC = tbSua_GhiChu.Text.Trim();
+                string TT = cbSua_TinhTrangPhong.Text.Trim();
+                int SL;
+                if (tbSuaSoLuongKhach.Text.Trim() == "")
+                    SL = 0;
+                else SL = int.Parse(tbSuaSoLuongKhach.Text.Trim());
+
+                phg = PhongBUS.LayPhong(maPhong);
+                if (phg.MaPhong == null)
+                    MessageBox.Show(phg.GhiChu, "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                else
+                {
+                    PhongBUS.CapNhat(maPhong, TP, LP, GC, TT, SL);
+                    MessageBox.Show("Cập nhật phòng thành công", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tb_MaPhong.Text = tb_SoLuongKhach.Text = tb_GhiChu.Text = tb_TenPhong.Text = "";
+                    tbSua_MaPhong.ReadOnly = false;
+                    dgvSua_DSPhong.DataSource = PhongBUS.LayDSPhong();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng click chọn bảng bên dưới để sửa\nVui lòng điền đầy đủ thông tin", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbSua_MaPhong.ReadOnly = false;
+            }
         }
 
         private void btnSua_Xoa_Click(object sender, EventArgs e)
         {
+            string MP = tbSua_MaPhong.Text.Trim();
+
+            if ((MP == "") || (string.Compare(MP, "000", true) < 0))
+                MessageBox.Show("Vui lòng nhập mã số phòng muốn xóa", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                PhongDTO phg = new PhongDTO();
+                phg = PhongBUS.LayPhong(MP);
+                if (phg.MaPhong == null)
+                    MessageBox.Show(phg.GhiChu);
+                else if (string.Compare(phg.TinhTrang, "Có người", true) == 0)
+                    MessageBox.Show("Phòng đang cho thuê,\nkhông thể xóa", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    PhongBUS.XoaPhong(MP);
+                    MessageBox.Show("Xóa thành công!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvSua_DSPhong.DataSource = PhongBUS.LayDSPhong();
+                    tb_MaPhong.Text = tb_SoLuongKhach.Text = tb_GhiChu.Text = tb_TenPhong.Text = "";
+                }
+            }
         }
 
         private void dgvSua_DSPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //string maPhong = dgvSua_DSPhong.SelectedRows[0].Cells[0].Value.ToString();
+            //PhongDTO phg = new PhongDTO();
+
+            if (dgvSua_DSPhong.SelectedRows.Count == 1)
+            {
+                tbSua_MaPhong.Text = dgvSua_DSPhong.SelectedRows[0].Cells[0].Value.ToString();
+                tbSua_MaPhong.ReadOnly = true;
+                tbSua_TenPhong.Text = dgvSua_DSPhong.SelectedRows[0].Cells[1].Value.ToString();
+
+                //PhongDTO phg = PhongBUS.LayPhong(tbSua_MaPhong.Text);
+                cbSua_MaLoaiPhong.SelectedItem = PhongBUS.LayPhong(tbSua_MaPhong.Text).LoaiPhong.MaLoaiPhong.ToString();
+
+                tbSua_GhiChu.Text = dgvSua_DSPhong.SelectedRows[0].Cells[3].Value.ToString();
+                cbSua_TinhTrangPhong.SelectedItem = dgvSua_DSPhong.SelectedRows[0].Cells[4].Value.ToString();
+                tbSuaSoLuongKhach.Text = dgvSua_DSPhong.SelectedRows[0].Cells[5].Value.ToString();
+            }
+            else
+                MessageBox.Show("Vui lòng chỉ chọn 1 dòng để sửa", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //PhongDTO phg = new PhongDTO();
+            //string maPhong = dgvSua_DSPhong.SelectedRows[0].Cells[0].Value.ToString(); //Lấy mã phòng của dòng vừa chọn
+            //phg = PhongBUS.LayPhong(maPhong);
+
+            ////Hiển thị các thông tin của phòng đc chọn lên các textbox:
+            //tbSua_MaPhong.Text = maPhong;
+            //tbSua_MaPhong.ReadOnly = true;
+            //tbSua_TenPhong.Text = phg.TenPhong;
+            //tbSua_GhiChu.Text = phg.GhiChu;
+            //tbSuaSoLuongKhach.Text = phg.SLKhach.ToString();
+            //cbSua_MaLoaiPhong.SelectedItem = phg.LoaiPhong.MaLoaiPhong.ToString();
+            //cbSua_TinhTrangPhong.SelectedItem = phg.TinhTrang;
+
         }
 
         private void cbSua_TinhTrangPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,6 +195,14 @@ namespace QLKS
         //
         private void btnChoThuePhong_Chon_Click(object sender, EventArgs e)
         {
+            LapPhieuThueForm form = new LapPhieuThueForm();
+            form.Show();
+            form.setMaPhong(dgvChonPhong_DSPhongTrong.SelectedRows[0].Cells[0].Value.ToString());
+        }
+
+        public void setMaPhongChoPhieuThue()
+        {
+
         }
 
         //
@@ -186,18 +278,65 @@ namespace QLKS
         private void btnQuanLyNguoiDung_LamLai_Click(object sender, EventArgs e)
         {
             txtTenDangNhap.Text = txtMatKhau.Text = txtEmail.Text = "";
+            txtTenDangNhap.ReadOnly = false;
         }
 
         private void btnQuanLyNguoiDung_Sua_Click(object sender, EventArgs e)
         {
+            string tenDangNhap = dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectedRows[0].Cells[0].Value.ToString();
+
+            if (txtTenDangNhap.TextLength > 0 && txtEmail.TextLength > 0 && txtMatKhau.TextLength > 0)
+            {
+                bool ketQua = NguoiDungBUS.suaNguoiDung(new NguoiDungDTO(tenDangNhap, txtMatKhau.Text, txtEmail.Text));
+
+                if (ketQua)
+                {
+                    MessageBox.Show("Sửa người dùng thành công", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvQuanLyNguoiDung_DanhSachNguoiDung.DataSource = NguoiDungBUS.hienThiTatCaNguoiDung();
+                    txtTenDangNhap.Text = txtMatKhau.Text = txtEmail.Text = "";
+                    txtTenDangNhap.ReadOnly = false;
+                }
+                else
+                    MessageBox.Show("Sửa người dùng thất bại", "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Vui lòng click chọn bảng bên dưới để sửa\nVà điền đầy đủ thông tin", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnQuanLyNguoiDung_ThemMoi_Click(object sender, EventArgs e)
         {
+            int ketQua = 0; // 0: Thêm thất bại
+                            // 1: Thêm thành công
+                            //-1: Đã tồn tại người dùng đó
+            if (txtTenDangNhap.TextLength > 0 && txtMatKhau.TextLength > 0 && txtEmail.TextLength > 0)
+            {
+                ketQua = NguoiDungBUS.themNguoiDung(new NguoiDungDTO(txtTenDangNhap.Text, txtMatKhau.Text, txtEmail.Text));
+                if (ketQua == 1)
+                {
+                    MessageBox.Show("Thêm người dùng mới thành công", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvQuanLyNguoiDung_DanhSachNguoiDung.DataSource = NguoiDungBUS.hienThiTatCaNguoiDung();
+                    txtTenDangNhap.Text = txtMatKhau.Text = txtEmail.Text = "";
+                }
+                else if (ketQua == 0)
+                    MessageBox.Show("Thêm người dùng mới thất bại", "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Đã tồn tại tên đăng nhập đó\nVui lòng nhập tên khác", "Loi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Vui lòng điền tên đầy đủ thông tin", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dgvQuanLyNguoiDung_DanhSachNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectedRows.Count == 1)
+            {
+                txtTenDangNhap.Text = dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectedRows[0].Cells[0].Value.ToString();
+                txtTenDangNhap.ReadOnly = true;
+                txtMatKhau.Text = dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectedRows[0].Cells[1].Value.ToString();
+                txtEmail.Text = dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectedRows[0].Cells[2].Value.ToString();
+            }
+            else
+                MessageBox.Show("Vui lòng chỉ chọn 1 dòng để sửa", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
