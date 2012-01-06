@@ -37,6 +37,7 @@ namespace QLKS
 
         private void btn_LamLai_Click(object sender, EventArgs e)
         {
+            tb_MaPhong.Text = tb_SoLuongKhach.Text = tb_GhiChu.Text = tb_TenPhong.Text = "";
         }
 
         private void cb_TinhTrangPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace QLKS
         //
         private void btnQuanLyNguoiDung_LamLai_Click(object sender, EventArgs e)
         {
+            txtTenDangNhap.Text = txtMatKhau.Text = txtEmail.Text = "";
         }
 
         private void btnQuanLyNguoiDung_Sua_Click(object sender, EventArgs e)
