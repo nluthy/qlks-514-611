@@ -134,14 +134,15 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "delete from PHONG where (MaPhong=@MP or MaPhong>@MP) and TinhTrang=@TT";
+                string chuoiLenh = "delete from PHONG where MaPhong=@MP and TinhTrang=@TT";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamSo = new OleDbParameter("@MP", OleDbType.LongVarChar);
-                if (MP == "") MP = "007";
+                if (MP == "")
+                    MP = "007";
                 thamSo.Value = MP;
                 lenh.Parameters.Add(thamSo);
                 thamSo = new OleDbParameter("@TT", OleDbType.LongVarChar);
-                thamSo.Value = "No";
+                thamSo.Value = "Trống";
                 lenh.Parameters.Add(thamSo);
                 lenh.ExecuteNonQuery();
             }
@@ -314,7 +315,8 @@ namespace QLKS.DAO
                 string chuoiLenh;
                 if (kihieu == true)
                     chuoiLenh = "insert into LoaiPhong(TenLoaiPhong,DonGia,SLKhachToiDa,DaXoa,MaLoaiPhong) values(@ten,@DG,@SL,@xoa,@MLP)";
-                else chuoiLenh = "update LoaiPhong set TenLoaiPhong=@ten,DonGia=@DG,SLKhachToiDa=@SL,DaXoa=@xoa where MaLoaiPhong=@MLP";
+                else
+                    chuoiLenh = "update LoaiPhong set TenLoaiPhong=@ten,DonGia=@DG,SLKhachToiDa=@SL,DaXoa=@xoa where MaLoaiPhong=@MLP";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamSo = new OleDbParameter("@ten", OleDbType.LongVarChar);

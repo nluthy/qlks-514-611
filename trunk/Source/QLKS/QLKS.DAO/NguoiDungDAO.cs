@@ -171,7 +171,7 @@ namespace QLKS.DAO
                     thamSo = new OleDbParameter("@MatKhau", OleDbType.LongVarChar);
                     thamSo.Value = nguoiDung.MatKhau;
                     lenh.Parameters.Add(thamSo);
-                    thamSo = new OleDbParameter("@Email", OleDbType.Integer);
+                    thamSo = new OleDbParameter("@Email", OleDbType.LongVarChar);
                     thamSo.Value = nguoiDung.Email;
                     lenh.Parameters.Add(thamSo);
 
@@ -236,6 +236,9 @@ namespace QLKS.DAO
                 thamSo = new OleDbParameter("@Email", OleDbType.LongVarChar);
                 thamSo.Value = nguoiDung.Email;
                 lenh.Parameters.Add(thamSo);
+                thamSo = new OleDbParameter("@TenDangNhap", OleDbType.LongVarChar);
+                thamSo.Value = nguoiDung.TenDangNhap;
+                lenh.Parameters.Add(thamSo);
 
                 ketQua = lenh.ExecuteNonQuery();
                 OleDbDataAdapter Adapter = new OleDbDataAdapter();
@@ -252,7 +255,8 @@ namespace QLKS.DAO
 
             if (ketQua != 0)
                 return true;
-            return false;
+            else
+                return false;
         }
     }
 }
