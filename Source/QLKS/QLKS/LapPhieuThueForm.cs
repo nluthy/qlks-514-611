@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using QLKS.DTO;
+using QLKS.BUS;
 
 namespace QLKS
 {
@@ -35,6 +37,11 @@ namespace QLKS
         public void setMaKhachHang(string maKhachHang)
         {
             this.txt_MaKhachHang.Text = maKhachHang;
+        }
+
+        public void setMaPhong(string maPhong)
+        {
+            this.txt_MaPhong.Text = maPhong;
         }
     }
 }
