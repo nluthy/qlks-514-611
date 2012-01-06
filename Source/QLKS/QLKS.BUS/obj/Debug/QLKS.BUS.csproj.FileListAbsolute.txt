@@ -1,9 +1,0 @@
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\obj\Debug\ResolveAssemblyReference.cache
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.BUS.dll
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.BUS.pdb
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.DAO.dll
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.DTO.dll
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.DTO.pdb
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\bin\Debug\QLKS.DAO.pdb
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\obj\Debug\QLKS.BUS.dll
-F:\LEARN\KHTN\4_Forth Year 2011_2012\1_Semester 1\1.PTTK PM\3.BaiTap\FinalProject\Source\QLKS\QLKS.BUS\obj\Debug\QLKS.BUS.pdb
