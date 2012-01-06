@@ -26,7 +26,7 @@ namespace QLKS
 
         private void btn_Chon_Click(object sender, EventArgs e)
         {
-            parent.setMaKhachHang(dgvDanhSachKhachHang.SelectedRows[0].Cells[0].Value.ToString();
+            parent.setMaKhachHang(dgvDanhSachKhachHang.SelectedRows[0].Cells[0].Value.ToString());
             Close();
         }
     }
