@@ -33,6 +33,15 @@ namespace QLKS.DTO
             set { email = value; }
         }
 
-        
+        public NguoiDungDTO()
+        {
+        }
+
+        public NguoiDungDTO(string tenDangNhap, string matKhau, string email)
+        {
+            this.tenDangNhap = tenDangNhap;
+            this.matKhau = matKhau;
+            this.email = email;
+        }
     }
 }
