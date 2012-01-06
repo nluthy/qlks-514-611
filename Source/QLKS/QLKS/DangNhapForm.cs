@@ -37,9 +37,9 @@ namespace QLKS
                 this.Close();
             }
             else if (kiemTra == 0)
-                MessageBox.Show("Tên đăng nhập không tồn tại", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên đăng nhập không tồn tại.\nVui lòng liên hệ Admin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show("Mật khẩu chưa đúng", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mật khẩu chưa đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
