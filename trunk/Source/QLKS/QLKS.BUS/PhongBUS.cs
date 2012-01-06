@@ -17,9 +17,9 @@ namespace QLKS.BUS
         {
             return PhongDAO.LayDSLoaiPhong();
         }
-        public static void NhapPhong(string MP, string TP, int LP, string GC)
+        public static void NhapPhong(string MP, string TP, int LP, string GC, string TT)
         {
-            PhongDAO.NhapPhong(MP, TP, LP, GC);
+            PhongDAO.NhapPhong(MP, TP, LP, GC, TT);
         }
         public static void XoaPhong(string MP)
         {
