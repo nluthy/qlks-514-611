@@ -210,10 +210,27 @@ namespace QLKS
         //
         private void btnLapHoaDon_ThanhToan_Click(object sender, EventArgs e)
         {
+            String maHoaDon = tbLapHoaDon_MaHD.Text;
+            if (maHoaDon != "")
+            {
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập mã hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLapHoaDon_Them_Click(object sender, EventArgs e)
         {
+            String maPhieuThue = cbLapHoaDon_MaPhieuThue.Text;
+            if (maPhieuThue != "")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa chọn mã phiếu thuê.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbLapHoaDon_MaPhieuThue_SelectedIndexChanged(object sender, EventArgs e)
@@ -222,8 +239,24 @@ namespace QLKS
 
         private void cbLapHoaDon_MaKH_SelectedIndexChanged(object sender, EventArgs e)
         {
+            KhachHangDTO kh = new KhachHangDTO();
+            kh = KhachHangBUS.LayKhach(cbLapHoaDon_MaKH.Text);
+            tbLapHoaDon_TenKhachHang.Text = kh.HoTen;
         }
-
+        private void tabPage_LapHoaDon_Enter(object sender, EventArgs e)
+        {
+            tbLapHoaDon_NgayThanhToan.Text = DateTime.Now.Date.ToString();
+            List<KhachHangDTO> dskh = KhachHangBUS.LayDSKhach();
+            List<PhieuThueDTO> dspt = PhieuThueBUS.layDSPT();
+            foreach (KhachHangDTO kh in dskh)
+            {
+                cbLapHoaDon_MaKH.Items.Add(kh.MaKH);
+                           }
+            foreach (PhieuThueDTO pt in dspt)
+            {
+                cbLapHoaDon_MaPhieuThue.Items.Add(pt.MaPhieuThue);
+            }
+        }
         //
         //Màn hình thống kê mật độ sử dụng
         //
