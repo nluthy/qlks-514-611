@@ -9,9 +9,9 @@ namespace QLKS.BUS
 {
     public class PhieuThueBUS
     {
-        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO[] dsKH)
+        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO KH)
         {
-            return PhieuThueDAO.ThemPhieu(MPT, MP, day, TT, dsKH);
+            return PhieuThueDAO.ThemPhieu(MPT, MP, day, TT, KH);
         }
         public static List<PhieuThueDTO> layDSPT()
         {

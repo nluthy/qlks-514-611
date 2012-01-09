@@ -779,6 +779,7 @@
             this.tabPageLapHoaDon.TabIndex = 1;
             this.tabPageLapHoaDon.Text = "Lập hóa đơn";
             this.tabPageLapHoaDon.UseVisualStyleBackColor = true;
+            this.tabPageLapHoaDon.Enter += new System.EventHandler(tabPage_LapHoaDon_Enter);
             // 
             // btnLapHoaDon_ThanhToan
             // 

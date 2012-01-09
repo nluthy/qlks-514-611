@@ -9,16 +9,16 @@ namespace QLKS.DAO
 {
     public class PhieuThueDAO : DataAccess
     {
-        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO[] dsKH)
+        public static bool ThemPhieu(string MPT, string MP, DateTime day, string TT, KhachHangDTO KH)
         {
             OleDbConnection link = null;
             try
             {
                 link = KetNoi();
                 string chuoiLenh;
-                // if (kihieu == true)
+
                 chuoiLenh = "insert into PHIEUTHUE(MaPhong,NgayBatDauThue,DaThanhToan,TienDichVu,MaPhieuThue) values(@MP,@day,@TT,@DV,@MPT)";
-                // else chuoiLenh = "update KHACHHANG set HoTen=@HT,MaLoaiKH=@MLK,DiaChi=@DC,SoGiayTo=@GT where MaKH=@MKH";
+
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamSo = new OleDbParameter("@MP", OleDbType.LongVarChar);
@@ -39,12 +39,11 @@ namespace QLKS.DAO
 
                 lenh.ExecuteNonQuery();
                 OleDbDataAdapter Adapter = new OleDbDataAdapter();
-                //  if (kihieu == true) 
+
                 Adapter.InsertCommand = lenh;
-                //  else Adapter.UpdateCommand = lenh;
-                int dem = dsKH.Count<KhachHangDTO>();
-                for (int i = 0; i < dem; i++)
-                    ThemCTPT(MPT, dsKH[i].MaKH);
+
+
+                ThemCTPT(MPT, KH.MaKH);
             }
             catch
             {

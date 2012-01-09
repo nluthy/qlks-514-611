@@ -40,8 +40,6 @@
             this.btn_ChonMaKhachHang = new System.Windows.Forms.Button();
             this.dgvDanhSachPhieuThue = new System.Windows.Forms.DataGridView();
             this.btn_Them = new System.Windows.Forms.Button();
-            this.btn_LamLai = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachPhieuThue)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +94,7 @@
             // 
             this.txt_MaPhieuThue.Location = new System.Drawing.Point(130, 60);
             this.txt_MaPhieuThue.Name = "txt_MaPhieuThue";
+            this.txt_MaPhieuThue.ReadOnly = true;
             this.txt_MaPhieuThue.Size = new System.Drawing.Size(155, 20);
             this.txt_MaPhieuThue.TabIndex = 0;
             // 
@@ -143,31 +142,13 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.Location = new System.Drawing.Point(387, 107);
+            this.btn_Them.Location = new System.Drawing.Point(196, 317);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(75, 23);
             this.btn_Them.TabIndex = 5;
             this.btn_Them.Text = "Thêm";
             this.btn_Them.UseVisualStyleBackColor = true;
-            // 
-            // btn_LamLai
-            // 
-            this.btn_LamLai.Location = new System.Drawing.Point(499, 107);
-            this.btn_LamLai.Name = "btn_LamLai";
-            this.btn_LamLai.Size = new System.Drawing.Size(75, 23);
-            this.btn_LamLai.TabIndex = 6;
-            this.btn_LamLai.Text = "Làm lại";
-            this.btn_LamLai.UseVisualStyleBackColor = true;
-            this.btn_LamLai.Click += new System.EventHandler(this.btn_LamLai_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(196, 320);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Xóa phiếu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // btnThoat
             // 
@@ -185,8 +166,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 355);
             this.Controls.Add(this.btnThoat);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_LamLai);
             this.Controls.Add(this.btn_Them);
             this.Controls.Add(this.dgvDanhSachPhieuThue);
             this.Controls.Add(this.btn_ChonMaKhachHang);
@@ -203,7 +182,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LapPhieuThueForm";
-            this.Text = "LapPhieuThueForm";
+            this.Text = "Lập phiếu thuê";
+            this.Load += new System.EventHandler(this.LapPhieuThueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachPhieuThue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,8 +204,6 @@
         private System.Windows.Forms.Button btn_ChonMaKhachHang;
         private System.Windows.Forms.DataGridView dgvDanhSachPhieuThue;
         private System.Windows.Forms.Button btn_Them;
-        private System.Windows.Forms.Button btn_LamLai;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnThoat;
     }
 }
