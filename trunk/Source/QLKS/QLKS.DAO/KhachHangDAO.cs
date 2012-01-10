@@ -16,7 +16,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "Select * from KHACHHANG,LOAIKHACH Where KHACHHANG.MaLoaiKH=LOAIKHACH.MaLoaiKH order by MaKH";
+                string chuoiLenh = "Select * from KhachHang,LoaiKhach Where KhachHang.MaLoaiKH=LoaiKhach.MaLoaiKH order by MaKH";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
 
@@ -54,7 +54,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "Select * from LOAIKHACH";
+                string chuoiLenh = "Select * from LoaiKhach";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbDataReader Doc = lenh.ExecuteReader();
                 while (Doc.Read())
@@ -85,7 +85,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "Select * from KHACHHANG,LOAIKHACH where MaKH=@MKH and KHACHHANG.MaLoaiKH=LOAIKHACH.MaLoaiKH";
+                string chuoiLenh = "Select * from KhachHang,LoaiKhach where MaKH=@MKH and KhachHang.MaLoaiKH=LoaiKhach.MaLoaiKH";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamso = new OleDbParameter("@MKH", OleDbType.LongVarChar);
@@ -123,8 +123,8 @@ namespace QLKS.DAO
                 link = KetNoi();
                 string chuoiLenh;
                 if (kihieu == true)
-                    chuoiLenh = "insert into KHACHHANG(HoTen,MaLoaiKH,DiaChi,SoGiayTo,MaKH) values(@HT,@MLK,@DC,@GT,@MKH)";
-                else chuoiLenh = "update KHACHHANG set HoTen=@HT,MaLoaiKH=@MLK,DiaChi=@DC,SoGiayTo=@GT where MaKH=@MKH";
+                    chuoiLenh = "insert into KhachHang(HoTen,MaLoaiKH,DiaChi,SoGiayTo,MaKH) values(@HT,@MLK,@DC,@GT,@MKH)";
+                else chuoiLenh = "update KhachHang set HoTen=@HT,MaLoaiKH=@MLK,DiaChi=@DC,SoGiayTo=@GT where MaKH=@MKH";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamSo = new OleDbParameter("@HT", OleDbType.LongVarChar);
@@ -166,7 +166,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "Select * from LOAIKHACH where MaLoaiKH=@MLK";
+                string chuoiLenh = "Select * from LoaiKhach where MaLoaiKH=@MLK";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamso = new OleDbParameter("@MLK", OleDbType.Integer);
@@ -198,8 +198,8 @@ namespace QLKS.DAO
                 link = KetNoi();
                 string chuoiLenh;
                 if (kihieu == true)
-                    chuoiLenh = "insert into LOAIKHACH(TenLoaiKH,HeSo,DaXoa,MaLoaiKH) values(@ten,@HS,@xoa,@MLK)";
-                else chuoiLenh = "update LOAIKHACH set TenLoaiKH=@ten,HeSo=@HS,DaXoa=@xoa where MaLoaiKH=@MLK";
+                    chuoiLenh = "insert into LoaiKhach(TenLoaiKH,HeSo,DaXoa,MaLoaiKH) values(@ten,@HS,@xoa,@MLK)";
+                else chuoiLenh = "update LoaiKhach set TenLoaiKH=@ten,HeSo=@HS,DaXoa=@xoa where MaLoaiKH=@MLK";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamSo = new OleDbParameter("@ten", OleDbType.LongVarChar);

@@ -281,8 +281,8 @@
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.doanhThuToolStripMenuItem,
-            this.mậtĐộSửDụngToolStripMenuItem});
+            this.mậtĐộSửDụngToolStripMenuItem,
+            this.doanhThuToolStripMenuItem});
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
             this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
@@ -1039,6 +1039,7 @@
             this.tabPageMatDoSuDung.TabIndex = 0;
             this.tabPageMatDoSuDung.Text = "Mật độ sử dụng";
             this.tabPageMatDoSuDung.UseVisualStyleBackColor = true;
+            this.tabPageMatDoSuDung.Enter += new System.EventHandler(this.tabPage_MatDoSuDung_Enter);
             // 
             // dgv_MatDoSudung
             // 
@@ -1117,6 +1118,7 @@
             this.tabPageDoanhThu.TabIndex = 1;
             this.tabPageDoanhThu.Text = "Doanh thu";
             this.tabPageDoanhThu.UseVisualStyleBackColor = true;
+            this.tabPageDoanhThu.Enter += new System.EventHandler(this.tabPage_DoanhThu_Enter);
             // 
             // tbDoanhThu
             // 
@@ -1236,6 +1238,7 @@
             this.tabPageTraCuuPhong.TabIndex = 0;
             this.tabPageTraCuuPhong.Text = "Tra cứu phòng";
             this.tabPageTraCuuPhong.UseVisualStyleBackColor = true;
+            this.tabPageTraCuuPhong.Enter +=new System.EventHandler(tabPageTraCuuPhong_Enter);
             // 
             // dgv_TraCuuPhong
             // 

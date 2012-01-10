@@ -14,6 +14,8 @@ namespace QLKS
     public partial class MainForm : Form
     {
         private List<PhieuThueDTO> dspt = new List<PhieuThueDTO>();
+        private List<ChiTietHoaDonDTO> dscthd = new List<ChiTietHoaDonDTO>();
+        private float thanhTien = 0;
         public MainForm()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace QLKS
 
 
 
-
+        #region Thêm phòng mới
         //
         // Màn hình Thêm phòng mới
         //
@@ -77,7 +79,10 @@ namespace QLKS
         private void cb_MaLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+        #endregion
 
+
+        #region Cập nhật phòng
         //
         // Màn hình Cập nhật phòng
         //
@@ -190,7 +195,10 @@ namespace QLKS
         {
             dgvSua_DSPhong.DataSource = PhongBUS.LayDSPhong();
         }
+        #endregion
 
+
+        #region Cho thuê phòng
         //
         //Màn hình Cho thuê phòng
         //
@@ -205,15 +213,46 @@ namespace QLKS
         {
 
         }
+        #endregion
 
+
+        #region Lập hóa đơn
         //
         //Màn hình lập hóa đơn
         //
         private void btnLapHoaDon_ThanhToan_Click(object sender, EventArgs e)
         {
             String maHoaDon = tbLapHoaDon_MaHD.Text;
-            if (maHoaDon != "")
+            String maKhachHang = cbLapHoaDon_MaKH.Text;
+            if (maHoaDon != "" && dspt.Count != 0 && maKhachHang != "")
             {
+                //dgv_LapHoaDon.Rows.Clear();
+                foreach (PhieuThueDTO pt in dspt)
+                {
+                    PhieuThueBUS.CapNhat(pt.MaPhieuThue, "Yes");
+                    PhongBUS.CapNhat(pt.Phong.MaPhong, pt.Phong.TenPhong, pt.Phong.LoaiPhong.MaLoaiPhong, "", "Trống", 0);
+                    ChiTietHoaDonDTO ct = new ChiTietHoaDonDTO();
+                    ct.Phieuthue = pt;
+                    ct.SoNgayThue = ((DateTime.Now - pt.NgayThue)).Days;
+                    ct.TienThue = ct.SoNgayThue * pt.Phong.LoaiPhong.DonGia;
+                    ct.TongCong = pt.TienDV + ct.TienThue;
+                    dscthd.Add(ct);
+                }
+                HoaDonBUS.themHD(maHoaDon, maKhachHang, DateTime.Now, (int)thanhTien, dscthd);
+                thanhTien = 0;
+                while(dspt.Count !=0)
+                {
+                    dspt.Remove(dspt[dspt.Count-1]);
+                }
+                while (dscthd.Count != 0)
+                {
+                    dscthd.Remove(dscthd[dscthd.Count - 1]);
+                }
+                MessageBox.Show("Thanh toán thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //while (dgv_LapHoaDon.Rows.Count != 0)
+                //{
+                //    dgv_LapHoaDon.Rows.Remove(dgv_LapHoaDon.Rows[dgv_LapHoaDon.Rows.Count - 1]);
+                //}
             }
             else
             {
@@ -229,6 +268,9 @@ namespace QLKS
                 dgv_LapHoaDon.DataSource = null;
                 PhieuThueDTO pt = PhieuThueBUS.layPT(maPhieuThue);
                 dspt.Add(pt);
+                TimeSpan d = DateTime.Now - pt.NgayThue;
+                thanhTien += pt.TienDV + pt.Phong.LoaiPhong.DonGia * d.Days;
+                tbLapHoaDon_ThanhTien.Text = thanhTien.ToString("00.00");
                 List<PhongDTO> dsp = new List<PhongDTO>();
                 foreach (PhieuThueDTO pth in dspt)
                 {
@@ -276,30 +318,125 @@ namespace QLKS
                 cbLapHoaDon_MaPhieuThue.Items.Add(pt.MaPhieuThue);
             }
         }
+
+        #endregion
+
+        #region Thống kế mật độ sử dụng phòng
         //
         //Màn hình thống kê mật độ sử dụng
         //
+        private void tabPage_MatDoSuDung_Enter(object sender, EventArgs e)
+        {
+            for (int i = 1; i < 13; ++i)
+            {
+                cbMatDoSuDung_Thang.Items.Add(i);
+            }
+        }
         private void btnMatDoSuDung_ThongKe_Click(object sender, EventArgs e)
         {
+            if (cbMatDoSuDung_Thang.Text != "")
+            {
+                List<PhongDTO> dsphg = new List<PhongDTO>();
+                dsphg = PhongBUS.LayDSPhong();
+                int[] arrNgayThue = new int[dsphg.Count];
+                arrNgayThue = PhongBUS.LapBaoCaoMatDo(Int32.Parse(cbMatDoSuDung_Thang.Text));
+
+                int tong = 0;
+                for (int i = 0; i < dsphg.Count; i++)
+                    tong += arrNgayThue[i];
+
+                dgv_MatDoSudung.Rows.Clear();
+                for (int i = 0; i < dsphg.Count; i++)
+                    dgv_MatDoSudung.Rows.Add(i + 1, dsphg[i].MaPhong, arrNgayThue[i],
+                        (Convert.ToDouble(arrNgayThue[i]) * 100 / Convert.ToDouble(tong)).ToString("00.00") + "%");
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa chọn tháng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbMatDoSuDung_Thang_SelectedIndexChanged(object sender, EventArgs e)
         {
-        }
 
+        }
+#endregion
+
+
+        #region Thống kê doanh thu
+        //
+        //Màn hình thống kê doanh thu
+        //
+        private void tabPage_DoanhThu_Enter(object sender, EventArgs e)
+        {
+            for (int i = 1; i < 13; ++i)
+            {
+                cbDoanhThu_Thang.Items.Add(i);
+            }
+        }
         private void btnDoanhThu_ThongKe_Click(object sender, EventArgs e)
         {
+            if (cbDoanhThu_Thang.Text != "")
+            {
+                int thang = int.Parse(cbDoanhThu_Thang.Text.Trim());
+                List<PhongDTO> dsphg = new List<PhongDTO>();
+                dsphg = PhongBUS.LayDSPhong();
+
+                int[] arrDoanhThu = new int[dsphg.Count];
+               
+                    arrDoanhThu = PhongBUS.LapBaoCaoDoanhThu(thang);
+                    int dt = 0;
+                    for (int i = 0; i < arrDoanhThu.Length; ++i)
+                    {
+                        dt += arrDoanhThu[i];
+                    }
+                    tbDoanhThu.Text = dt.ToString("00.00");
+                List<int> dstb = new List<int>();
+                dstb = PhongBUS.layDSTBThang(thang);
+                dgvDoanhThu.Rows.Clear();
+                for (int i = 0; i < dsphg.Count; i++)
+                    dgvDoanhThu.Rows.Add(i + 1, dsphg[i].MaPhong, arrDoanhThu[i], dstb[i]);
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa chọn tháng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbDoanhThu_Thang_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
+        #endregion 
+
         //
         //Màn hình tra cứu phòng
         //
+
+        private void tabPageTraCuuPhong_Enter(object sender, EventArgs e)
+        {
+            cbTraCuuPhong_TinhTrang.Items.Add("Trống");
+            cbTraCuuPhong_TinhTrang.Items.Add("Có người");
+            List<LoaiPhongDTO> dslp = PhongBUS.LayDSLoaiPhong();
+            foreach (LoaiPhongDTO lp in dslp)
+            {
+                cbTraCuuPhong_LoaiPhong.Items.Add(lp.TenLoaiPhong);
+            }
+        }
         private void btbTraCuuPhong_Tim_Click(object sender, EventArgs e)
         {
+            dgv_TraCuuPhong.Rows.Clear();
+            List<PhongDTO> temp = new List<PhongDTO>();
+            string maphong = tbTraCuuPhong_MaPhong.Text.Trim();
+            string loaiphong = cbTraCuuPhong_LoaiPhong.Text.Trim();
+            string tenphong = tbTraCuuPhong_TenPhong.Text.Trim();
+            string tinhtrang = cbTraCuuPhong_TinhTrang.Text.Trim();
+
+            PhongBUS.TimPhong(temp, maphong, loaiphong, tenphong, tinhtrang);
+            for (int i = 0; i < temp.Count; ++i)
+            {
+                dgv_TraCuuPhong.Rows.Add(temp[i].MaPhong, temp[i].TenPhong, temp[i].LoaiPhong.TenLoaiPhong, temp[i].TinhTrang);
+            }
         }
 
         private void cbTraCuuPhong_TinhTrang_SelectedIndexChanged(object sender, EventArgs e)
@@ -310,12 +447,31 @@ namespace QLKS
         {
         }
 
+
+        #region Tra cứu hóa đơn
         //
         //Màn hình tra cứu hóa đơn
         //
         private void btnTraCuuHD_Tim_Click(object sender, EventArgs e)
         {
+            string maHoaDon = tbTraCuuHoaDon_MaHD.Text.Trim();
+            string maxTienThuePhong = tbTraCuuHoaDon_TongTren.Text.Trim();
+            string minTienThuePhong = tbTraCuuHoaDon_TongDuoi.Text.Trim();
+            string ngay = tbTraCuuHoaDon_Ngay.Text.Trim();
+
+            List<HoaDonDTO> dsHoaDon = HoaDonBUS.layDSHoaDon();
+            List<HoaDonDTO> temp = new List<HoaDonDTO>();
+            for (int i = 0; i < dsHoaDon.Count; ++i)
+            {
+                if (dsHoaDon[i].MaHD.Equals(maHoaDon) || maHoaDon.Equals(""))
+                    if (maxTienThuePhong.Equals("") || (dsHoaDon[i].Thanhtien <= double.Parse(maxTienThuePhong)))
+                        if (minTienThuePhong.Equals("") || (dsHoaDon[i].Thanhtien > double.Parse(minTienThuePhong)))
+                            if (ngay.Equals("") || (dsHoaDon[i].NgayTT == DateTime.Parse(ngay)))
+                                temp.Add(dsHoaDon[i]);
+            }
+            dgv_TraCuuHoaDon.DataSource = temp;
         }
+        #endregion
 
         //
         //Màn hình tra cứu khách hàng
@@ -324,6 +480,7 @@ namespace QLKS
         {
         }
 
+        #region Quản lý người dùng
         //
         //Màn hình quản lý người dùng
         //
@@ -391,6 +548,7 @@ namespace QLKS
                 MessageBox.Show("Vui lòng chỉ chọn 1 dòng để sửa", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        #endregion
 
 
 
@@ -481,91 +639,93 @@ namespace QLKS
         {
             tabCon_QuanLyPhong.SelectedIndex = 0;
             btn_QuanLyPhong_Click(sender, e);
-           
+
         }
 
         private void tiếpNhậnKháchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_ChoThuePhong.SelectedIndex = 0;
             btn_ChoThuePhong_Click(sender, e);
-           
+
         }
 
         private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabCon_ThongKe.SelectedIndex = 0;
+            tabCon_ThongKe.SelectedIndex = 1;
             btn_ThongKe_Click(sender, e);
-           
+
         }
 
         private void trToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_TraCuu.SelectedIndex = 0;
             btn_TraCuu_Click(sender, e);
-          
+
         }
 
         private void quảnLýNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_QuanLyChung.SelectedIndex = 0;
             btn_QuanLyChung_Click(sender, e);
-           
+
         }
-        #endregion
 
         private void cậpNhậtPhòngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_QuanLyPhong.SelectedIndex = 1;
             btn_QuanLyPhong_Click(sender, e);
-            
+
         }
 
         private void lậpHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_ChoThuePhong.SelectedIndex = 1;
             btn_ChoThuePhong_Click(sender, e);
-            
+
         }
 
         private void mậtĐộSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabCon_ThongKe.SelectedIndex = 1;
+            tabCon_ThongKe.SelectedIndex = 0;
             btn_ThongKe_Click(sender, e);
-           
+
         }
 
         private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_TraCuu.SelectedIndex = 1;
             btn_TraCuu_Click(sender, e);
-           
+
         }
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_TraCuu.SelectedIndex = 2;
             btn_TraCuu_Click(sender, e);
-            
+
         }
 
         private void quyĐịnhVềPhòngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_QuanLyChung.SelectedIndex = 1;
             btn_QuanLyChung_Click(sender, e);
-            
+
         }
 
         private void quyĐịnhVềKháchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabCon_QuanLyChung.SelectedIndex = 2;
             btn_QuanLyChung_Click(sender, e);
-            
+
         }
 
         private void hướngDẫnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Quản lý khách sạn\nv1.0\n514611", "Giới thiệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        #endregion
+
 
 
 

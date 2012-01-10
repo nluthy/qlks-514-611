@@ -16,7 +16,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "select * from HOADON ";
+                string chuoiLenh = "select * from HoaDon ";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbDataReader Doc = lenh.ExecuteReader();
@@ -51,7 +51,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "select * from CHITIETHOADON where MaHoaDon =@MHD";
+                string chuoiLenh = "select * from ChiTietHoaDon where MaHoaDon =@MHD";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamso = new OleDbParameter("@MHD", OleDbType.LongVarChar);
                 thamso.Value = MHD;
@@ -87,7 +87,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "insert into HOADON(MaHoaDon,MaKH,NgayThanhToan,ThanhTien) values (@MHD,@MKH,@NTT,@tien)";
+                string chuoiLenh = "insert into HoaDon(MaHoaDon,MaKH,NgayThanhToan,ThanhTien) values (@MHD,@MKH,@NTT,@tien)";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamso = new OleDbParameter("@MHD", OleDbType.LongVarChar);
                 thamso.Value = MHD;
@@ -128,7 +128,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "insert into CHITIETHOADON(MaHoaDon,MaPhieuThue,SoNgayThue,TienThue,TongCong) values (@MHD,@MPT,@SN,@tien,@tong)";
+                string chuoiLenh = "insert into ChiTietHoaDon(MaHoaDon,MaPhieuThue,SoNgayThue,TienThue,TongCong) values (@MHD,@MPT,@SN,@tien,@tong)";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamso = new OleDbParameter("@MHD", OleDbType.LongVarChar);
