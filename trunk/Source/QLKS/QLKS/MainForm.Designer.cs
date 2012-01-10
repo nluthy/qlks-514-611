@@ -253,6 +253,7 @@
             this.cậpNhậtPhòngToolStripMenuItem.Name = "cậpNhậtPhòngToolStripMenuItem";
             this.cậpNhậtPhòngToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cậpNhậtPhòngToolStripMenuItem.Text = "Cập nhật phòng";
+            this.cậpNhậtPhòngToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtPhòngToolStripMenuItem_Click);
             // 
             // choThuêPhòngToolStripMenuItem
             // 
@@ -275,6 +276,7 @@
             this.lậpHóaĐơnToolStripMenuItem.Name = "lậpHóaĐơnToolStripMenuItem";
             this.lậpHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.lậpHóaĐơnToolStripMenuItem.Text = "Lập hóa đơn";
+            this.lậpHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.lậpHóaĐơnToolStripMenuItem_Click);
             // 
             // thốngKêToolStripMenuItem
             // 
@@ -297,6 +299,7 @@
             this.mậtĐộSửDụngToolStripMenuItem.Name = "mậtĐộSửDụngToolStripMenuItem";
             this.mậtĐộSửDụngToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.mậtĐộSửDụngToolStripMenuItem.Text = "Mật độ sử dụng";
+            this.mậtĐộSửDụngToolStripMenuItem.Click += new System.EventHandler(this.mậtĐộSửDụngToolStripMenuItem_Click);
             // 
             // traCưToolStripMenuItem
             // 
@@ -320,18 +323,21 @@
             this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
             this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.hóaĐơnToolStripMenuItem.Text = "Hóa đơn";
+            this.hóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.hóaĐơnToolStripMenuItem_Click);
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
             this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
+            this.kháchHàngToolStripMenuItem.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
             // 
             // hướngDẫnToolStripMenuItem
             // 
             this.hướngDẫnToolStripMenuItem.Name = "hướngDẫnToolStripMenuItem";
-            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.hướngDẫnToolStripMenuItem.Text = "Hướng dẫn";
+            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.hướngDẫnToolStripMenuItem.Text = "Giới thiệu";
+            this.hướngDẫnToolStripMenuItem.Click += new System.EventHandler(this.hướngDẫnToolStripMenuItem_Click);
             // 
             // quảnLýChungToolStripMenuItem
             // 
@@ -356,12 +362,14 @@
             this.quyĐịnhVềPhòngToolStripMenuItem.Name = "quyĐịnhVềPhòngToolStripMenuItem";
             this.quyĐịnhVềPhòngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quyĐịnhVềPhòngToolStripMenuItem.Text = "Quy định về phòng";
+            this.quyĐịnhVềPhòngToolStripMenuItem.Click += new System.EventHandler(this.quyĐịnhVềPhòngToolStripMenuItem_Click);
             // 
             // quyĐịnhVềKháchToolStripMenuItem
             // 
             this.quyĐịnhVềKháchToolStripMenuItem.Name = "quyĐịnhVềKháchToolStripMenuItem";
             this.quyĐịnhVềKháchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quyĐịnhVềKháchToolStripMenuItem.Text = "Quy định về khách";
+            this.quyĐịnhVềKháchToolStripMenuItem.Click += new System.EventHandler(this.quyĐịnhVềKháchToolStripMenuItem_Click);
             // 
             // panelQuanLyPhong
             // 
@@ -432,9 +440,9 @@
             this.dgv_DSPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSPhong.Location = new System.Drawing.Point(22, 156);
             this.dgv_DSPhong.Name = "dgv_DSPhong";
+            this.dgv_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DSPhong.Size = new System.Drawing.Size(570, 150);
             this.dgv_DSPhong.TabIndex = 12;
-            this.dgv_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // cb_TinhTrangPhong
             // 
@@ -587,10 +595,10 @@
             this.dgvSua_DSPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSua_DSPhong.Location = new System.Drawing.Point(16, 157);
             this.dgvSua_DSPhong.Name = "dgvSua_DSPhong";
+            this.dgvSua_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSua_DSPhong.Size = new System.Drawing.Size(570, 150);
             this.dgvSua_DSPhong.TabIndex = 27;
-            this.dgvSua_DSPhong.CellContentClick +=new System.Windows.Forms.DataGridViewCellEventHandler(dgvSua_DSPhong_CellContentClick);
-            this.dgvSua_DSPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSua_DSPhong.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSua_DSPhong_CellContentClick);
             // 
             // cbSua_TinhTrangPhong
             // 
@@ -749,9 +757,9 @@
             this.dgvChonPhong_DSPhongTrong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChonPhong_DSPhongTrong.Location = new System.Drawing.Point(6, 67);
             this.dgvChonPhong_DSPhongTrong.Name = "dgvChonPhong_DSPhongTrong";
+            this.dgvChonPhong_DSPhongTrong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvChonPhong_DSPhongTrong.Size = new System.Drawing.Size(702, 239);
             this.dgvChonPhong_DSPhongTrong.TabIndex = 0;
-            this.dgvChonPhong_DSPhongTrong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // tabPageLapHoaDon
             // 
@@ -779,7 +787,7 @@
             this.tabPageLapHoaDon.TabIndex = 1;
             this.tabPageLapHoaDon.Text = "Lập hóa đơn";
             this.tabPageLapHoaDon.UseVisualStyleBackColor = true;
-            this.tabPageLapHoaDon.Enter += new System.EventHandler(tabPage_LapHoaDon_Enter);
+            this.tabPageLapHoaDon.Enter += new System.EventHandler(this.tabPage_LapHoaDon_Enter);
             // 
             // btnLapHoaDon_ThanhToan
             // 
@@ -932,6 +940,7 @@
             // 
             // panelChucNang
             // 
+            this.panelChucNang.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panelChucNang.Controls.Add(this.btn_ChoThuePhong);
             this.panelChucNang.Controls.Add(this.btn_QuanLyChung);
             this.panelChucNang.Controls.Add(this.btn_ThongKe);
@@ -944,53 +953,58 @@
             // 
             // btn_ChoThuePhong
             // 
+            this.btn_ChoThuePhong.BackColor = System.Drawing.Color.SkyBlue;
             this.btn_ChoThuePhong.Location = new System.Drawing.Point(5, 66);
             this.btn_ChoThuePhong.Name = "btn_ChoThuePhong";
             this.btn_ChoThuePhong.Size = new System.Drawing.Size(118, 56);
             this.btn_ChoThuePhong.TabIndex = 4;
             this.btn_ChoThuePhong.Text = "Cho thuê phòng";
-            this.btn_ChoThuePhong.UseVisualStyleBackColor = true;
+            this.btn_ChoThuePhong.UseVisualStyleBackColor = false;
             this.btn_ChoThuePhong.Click += new System.EventHandler(this.btn_ChoThuePhong_Click);
             // 
             // btn_QuanLyChung
             // 
+            this.btn_QuanLyChung.BackColor = System.Drawing.Color.SkyBlue;
             this.btn_QuanLyChung.Enabled = false;
             this.btn_QuanLyChung.Location = new System.Drawing.Point(3, 252);
             this.btn_QuanLyChung.Name = "btn_QuanLyChung";
             this.btn_QuanLyChung.Size = new System.Drawing.Size(118, 56);
             this.btn_QuanLyChung.TabIndex = 3;
             this.btn_QuanLyChung.Text = "Quản lý chung";
-            this.btn_QuanLyChung.UseVisualStyleBackColor = true;
+            this.btn_QuanLyChung.UseVisualStyleBackColor = false;
             this.btn_QuanLyChung.Click += new System.EventHandler(this.btn_QuanLyChung_Click);
             // 
             // btn_ThongKe
             // 
+            this.btn_ThongKe.BackColor = System.Drawing.Color.SkyBlue;
             this.btn_ThongKe.Location = new System.Drawing.Point(3, 128);
             this.btn_ThongKe.Name = "btn_ThongKe";
             this.btn_ThongKe.Size = new System.Drawing.Size(118, 56);
             this.btn_ThongKe.TabIndex = 2;
             this.btn_ThongKe.Text = "Thống kê";
-            this.btn_ThongKe.UseVisualStyleBackColor = true;
+            this.btn_ThongKe.UseVisualStyleBackColor = false;
             this.btn_ThongKe.Click += new System.EventHandler(this.btn_ThongKe_Click);
             // 
             // btn_TraCuu
             // 
+            this.btn_TraCuu.BackColor = System.Drawing.Color.SkyBlue;
             this.btn_TraCuu.Location = new System.Drawing.Point(3, 190);
             this.btn_TraCuu.Name = "btn_TraCuu";
             this.btn_TraCuu.Size = new System.Drawing.Size(118, 56);
             this.btn_TraCuu.TabIndex = 1;
             this.btn_TraCuu.Text = "Tra cứu";
-            this.btn_TraCuu.UseVisualStyleBackColor = true;
+            this.btn_TraCuu.UseVisualStyleBackColor = false;
             this.btn_TraCuu.Click += new System.EventHandler(this.btn_TraCuu_Click);
             // 
             // btn_QuanLyPhong
             // 
+            this.btn_QuanLyPhong.BackColor = System.Drawing.Color.SkyBlue;
             this.btn_QuanLyPhong.Location = new System.Drawing.Point(4, 4);
             this.btn_QuanLyPhong.Name = "btn_QuanLyPhong";
             this.btn_QuanLyPhong.Size = new System.Drawing.Size(118, 56);
             this.btn_QuanLyPhong.TabIndex = 0;
             this.btn_QuanLyPhong.Text = "Quản lý phòng";
-            this.btn_QuanLyPhong.UseVisualStyleBackColor = true;
+            this.btn_QuanLyPhong.UseVisualStyleBackColor = false;
             this.btn_QuanLyPhong.Click += new System.EventHandler(this.btn_QuanLyPhong_Click);
             // 
             // panelThongKe
@@ -1036,9 +1050,9 @@
             this.tyLe});
             this.dgv_MatDoSudung.Location = new System.Drawing.Point(31, 79);
             this.dgv_MatDoSudung.Name = "dgv_MatDoSudung";
+            this.dgv_MatDoSudung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_MatDoSudung.Size = new System.Drawing.Size(647, 252);
             this.dgv_MatDoSudung.TabIndex = 3;
-            this.dgv_MatDoSudung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // stt
             // 
@@ -1131,9 +1145,9 @@
             this.dataGridViewTextBoxColumn4});
             this.dgvDoanhThu.Location = new System.Drawing.Point(32, 77);
             this.dgvDoanhThu.Name = "dgvDoanhThu";
+            this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDoanhThu.Size = new System.Drawing.Size(647, 156);
             this.dgvDoanhThu.TabIndex = 7;
-            this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1228,9 +1242,9 @@
             this.dgv_TraCuuPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TraCuuPhong.Location = new System.Drawing.Point(24, 151);
             this.dgv_TraCuuPhong.Name = "dgv_TraCuuPhong";
+            this.dgv_TraCuuPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TraCuuPhong.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuPhong.TabIndex = 10;
-            this.dgv_TraCuuPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btbTraCuuPhong_Tim
             // 
@@ -1349,9 +1363,9 @@
             this.dgv_TraCuuHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TraCuuHoaDon.Location = new System.Drawing.Point(26, 168);
             this.dgv_TraCuuHoaDon.Name = "dgv_TraCuuHoaDon";
+            this.dgv_TraCuuHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TraCuuHoaDon.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuHoaDon.TabIndex = 20;
-            this.dgv_TraCuuHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btnTraCuuHD_Tim
             // 
@@ -1451,9 +1465,9 @@
             this.dgv_TraCuuKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TraCuuKH.Location = new System.Drawing.Point(26, 168);
             this.dgv_TraCuuKH.Name = "dgv_TraCuuKH";
+            this.dgv_TraCuuKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TraCuuKH.Size = new System.Drawing.Size(667, 150);
             this.dgv_TraCuuKH.TabIndex = 30;
-            this.dgv_TraCuuKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // btnTraCuuKH_Tim
             // 
@@ -1593,8 +1607,7 @@
             this.dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvQuanLyNguoiDung_DanhSachNguoiDung.Size = new System.Drawing.Size(510, 150);
             this.dgvQuanLyNguoiDung_DanhSachNguoiDung.TabIndex = 16;
-            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(dgvQuanLyNguoiDung_DanhSachNguoiDung_CellContentClick);
-            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvQuanLyNguoiDung_DanhSachNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuanLyNguoiDung_DanhSachNguoiDung_CellContentClick);
             // 
             // txtMatKhau
             // 
@@ -1667,6 +1680,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::QLKS.Properties.Resources.bg;
             this.ClientSize = new System.Drawing.Size(866, 412);
             this.Controls.Add(this.panelQuanLyChung);
             this.Controls.Add(this.panelTraCuu);
