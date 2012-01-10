@@ -17,7 +17,7 @@ namespace QLKS.DAO
                 link = KetNoi();
                 string chuoiLenh;
 
-                chuoiLenh = "insert into PHIEUTHUE(MaPhong,NgayBatDauThue,DaThanhToan,TienDichVu,MaPhieuThue) values(@MP,@day,@TT,@DV,@MPT)";
+                chuoiLenh = "insert into PhieuThue(MaPhong,NgayBatDauThue,DaThanhToan,TienDichVu,MaPhieuThue) values(@MP,@day,@TT,@DV,@MPT)";
 
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
@@ -62,7 +62,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "insert into CHITIETPHIEUTHUE(MaPhieuThue,MaKH) values (@MPT,@MKH)";
+                string chuoiLenh = "insert into ChiTietPhieuThue(MaPhieuThue,MaKH) values (@MPT,@MKH)";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamSo = new OleDbParameter("@MPT", OleDbType.LongVarChar);
                 thamSo.Value = MPT;
@@ -91,7 +91,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "select * from PHIEUTHUE,PHONG,LOAIPHONG where PHIEUTHUE.MaPhong=PHONG.MaPhong and PHONG.MaLoaiPhong=LOAIPHONG.MaLoaiPhong";
+                string chuoiLenh = "select * from PhieuThue,Phong,LoaiPhong where PhieuThue.MaPhong=Phong.MaPhong and Phong.MaLoaiPhong=LoaiPhong.MaLoaiPhong";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbDataReader Doc = lenh.ExecuteReader();
@@ -142,7 +142,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "select * from CHITIETPHIEUTHUE where MaPhieuThue=@MPT";
+                string chuoiLenh = "select * from ChiTietPhieuThue where MaPhieuThue=@MPT";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamSo = new OleDbParameter("@MPT", OleDbType.LongVarChar);
                 thamSo.Value = maphieu;
@@ -173,7 +173,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "select * from PHIEUTHUE,PHONG,LOAIPHONG where PHIEUTHUE.MaPhong=PHONG.MaPhong and PHONG.MaLoaiPhong=LOAIPHONG.MaLoaiPhong and MaPhieuThue=@MPT";
+                string chuoiLenh = "select * from PhieuThue,Phong,LoaiPhong where PhieuThue.MaPhong=Phong.MaPhong and Phong.MaLoaiPhong=LoaiPhong.MaLoaiPhong and MaPhieuThue=@MPT";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamso = new OleDbParameter("@MPT", OleDbType.LongVarChar);
                 thamso.Value = MPT;
@@ -228,7 +228,7 @@ namespace QLKS.DAO
                 try
                 {
                     dv = int.Parse(TT);
-                    string chuoiLenh = "update PHIEUTHUE set TienDichVu=@DV where MaPhieuThue=@MPT";
+                    string chuoiLenh = "update PhieuTHue set TienDichVu=@DV where MaPhieuThue=@MPT";
                     lenh = new OleDbCommand(chuoiLenh, link);
                     thamSo = new OleDbParameter("@DV", OleDbType.Integer);
                     thamSo.Value = dv;
@@ -236,7 +236,7 @@ namespace QLKS.DAO
                 }
                 catch
                 {
-                    string chuoiLenh = "update PHIEUTHUE set DaThanhToan=@TT where MaPhieuThue=@MPT";
+                    string chuoiLenh = "update PhieuThue set DaThanhToan=@TT where MaPhieuThue=@MPT";
                     lenh = new OleDbCommand(chuoiLenh, link);
                     thamSo = new OleDbParameter("@TT", OleDbType.LongVarChar);
                     thamSo.Value = TT;

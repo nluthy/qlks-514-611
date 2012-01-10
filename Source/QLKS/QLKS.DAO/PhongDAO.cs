@@ -134,7 +134,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "delete from PHONG where MaPhong=@MP and TinhTrang=@TT";
+                string chuoiLenh = "delete from Phong where MaPhong=@MP and TinhTrang=@TT";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
                 OleDbParameter thamSo = new OleDbParameter("@MP", OleDbType.LongVarChar);
                 if (MP == "")
@@ -163,7 +163,7 @@ namespace QLKS.DAO
             try
             {
                 link = KetNoi();
-                string chuoiLenh = "update PHONG set TenPhong=@TP,MaLoaiPhong=@LP,GhiChu=@GC,Tinhtrang=@TT,SLKhach=@SL where MaPhong=@MP";
+                string chuoiLenh = "update Phong set TenPhong=@TP,MaLoaiPhong=@LP,GhiChu=@GC,Tinhtrang=@TT,SLKhach=@SL where MaPhong=@MP";
                 OleDbCommand lenh = new OleDbCommand(chuoiLenh, link);
 
                 OleDbParameter thamSo = new OleDbParameter("@TP", OleDbType.LongVarChar);
