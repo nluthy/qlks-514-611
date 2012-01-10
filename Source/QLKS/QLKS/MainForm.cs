@@ -479,29 +479,93 @@ namespace QLKS
         #region Các sự kiện menu
         private void thêmPhòngMớiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabCon_QuanLyPhong.SelectedIndex = 0;
             btn_QuanLyPhong_Click(sender, e);
+           
         }
 
         private void tiếpNhậnKháchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabCon_ChoThuePhong.SelectedIndex = 0;
             btn_ChoThuePhong_Click(sender, e);
+           
         }
 
         private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabCon_ThongKe.SelectedIndex = 0;
             btn_ThongKe_Click(sender, e);
+           
         }
 
         private void trToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabCon_TraCuu.SelectedIndex = 0;
             btn_TraCuu_Click(sender, e);
+          
         }
 
         private void quảnLýNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabCon_QuanLyChung.SelectedIndex = 0;
             btn_QuanLyChung_Click(sender, e);
+           
         }
         #endregion
+
+        private void cậpNhậtPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_QuanLyPhong.SelectedIndex = 1;
+            btn_QuanLyPhong_Click(sender, e);
+            
+        }
+
+        private void lậpHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_ChoThuePhong.SelectedIndex = 1;
+            btn_ChoThuePhong_Click(sender, e);
+            
+        }
+
+        private void mậtĐộSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_ThongKe.SelectedIndex = 1;
+            btn_ThongKe_Click(sender, e);
+           
+        }
+
+        private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_TraCuu.SelectedIndex = 1;
+            btn_TraCuu_Click(sender, e);
+           
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_TraCuu.SelectedIndex = 2;
+            btn_TraCuu_Click(sender, e);
+            
+        }
+
+        private void quyĐịnhVềPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_QuanLyChung.SelectedIndex = 1;
+            btn_QuanLyChung_Click(sender, e);
+            
+        }
+
+        private void quyĐịnhVềKháchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabCon_QuanLyChung.SelectedIndex = 2;
+            btn_QuanLyChung_Click(sender, e);
+            
+        }
+
+        private void hướngDẫnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Quản lý khách sạn\nv1.0\n514611", "Giới thiệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
 
 
