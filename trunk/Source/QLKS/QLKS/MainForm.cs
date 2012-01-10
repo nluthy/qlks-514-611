@@ -13,6 +13,7 @@ namespace QLKS
 {
     public partial class MainForm : Form
     {
+        private List<PhieuThueDTO> dspt = new List<PhieuThueDTO>();
         public MainForm()
         {
             InitializeComponent();
@@ -183,7 +184,7 @@ namespace QLKS
         {
         }
 
-        
+
 
         private void tabPage_CapNhatPhong_Enter(object sender, EventArgs e)
         {
@@ -225,7 +226,25 @@ namespace QLKS
             String maPhieuThue = cbLapHoaDon_MaPhieuThue.Text;
             if (maPhieuThue != "")
             {
-
+                dgv_LapHoaDon.DataSource = null;
+                PhieuThueDTO pt = PhieuThueBUS.layPT(maPhieuThue);
+                dspt.Add(pt);
+                List<PhongDTO> dsp = new List<PhongDTO>();
+                foreach (PhieuThueDTO pth in dspt)
+                {
+                    dsp.Add(pth.Phong);
+                }
+                dgv_LapHoaDon.DataSource = dspt;
+                dgv_LapHoaDon.Columns.Remove("Phong");
+                DataGridViewColumn column = new DataGridViewColumn();
+                column.CellTemplate = new DataGridViewTextBoxCell();
+                column.Name = "Phong";
+                column.ValueType = dsp[0].TenPhong.GetType();
+                dgv_LapHoaDon.Columns.Add(column);
+                for (int i = 0; i < dsp.Count; ++i)
+                {
+                    dgv_LapHoaDon.Rows[i].Cells[dgv_LapHoaDon.Columns.Count - 1].Value = dsp[i].TenPhong;
+                }
             }
             else
             {
@@ -251,7 +270,7 @@ namespace QLKS
             foreach (KhachHangDTO kh in dskh)
             {
                 cbLapHoaDon_MaKH.Items.Add(kh.MaKH);
-                           }
+            }
             foreach (PhieuThueDTO pt in dspt)
             {
                 cbLapHoaDon_MaPhieuThue.Items.Add(pt.MaPhieuThue);
@@ -339,8 +358,8 @@ namespace QLKS
         private void btnQuanLyNguoiDung_ThemMoi_Click(object sender, EventArgs e)
         {
             int ketQua = 0; // 0: Thêm thất bại
-                            // 1: Thêm thành công
-                            //-1: Đã tồn tại người dùng đó
+            // 1: Thêm thành công
+            //-1: Đã tồn tại người dùng đó
             if (txtTenDangNhap.TextLength > 0 && txtMatKhau.TextLength > 0 && txtEmail.TextLength > 0)
             {
                 ketQua = NguoiDungBUS.themNguoiDung(new NguoiDungDTO(txtTenDangNhap.Text, txtMatKhau.Text, txtEmail.Text));
@@ -405,7 +424,7 @@ namespace QLKS
             cbSua_TinhTrangPhong.SelectedIndex = 0;
 
             dgv_DSPhong.DataSource = PhongBUS.LayDSPhong();
-           
+
         }
 
         private void btn_ChoThuePhong_Click(object sender, EventArgs e)
