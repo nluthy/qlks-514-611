@@ -91,7 +91,7 @@
             this.btnLapHoaDon_ThanhToan = new System.Windows.Forms.Button();
             this.tbLapHoaDon_ThanhTien = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_LapHoaDon = new System.Windows.Forms.DataGridView();
             this.btnLapHoaDon_Them = new System.Windows.Forms.Button();
             this.tbLapHoaDon_TenKhachHang = new System.Windows.Forms.TextBox();
             this.tbLapHoaDon_NgayThanhToan = new System.Windows.Forms.TextBox();
@@ -195,7 +195,7 @@
             this.tabPageTiepNhanKhach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChonPhong_DSPhongTrong)).BeginInit();
             this.tabPageLapHoaDon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_LapHoaDon)).BeginInit();
             this.panelChucNang.SuspendLayout();
             this.panelThongKe.SuspendLayout();
             this.tabCon_ThongKe.SuspendLayout();
@@ -758,7 +758,7 @@
             this.tabPageLapHoaDon.Controls.Add(this.btnLapHoaDon_ThanhToan);
             this.tabPageLapHoaDon.Controls.Add(this.tbLapHoaDon_ThanhTien);
             this.tabPageLapHoaDon.Controls.Add(this.label17);
-            this.tabPageLapHoaDon.Controls.Add(this.dataGridView1);
+            this.tabPageLapHoaDon.Controls.Add(this.dgv_LapHoaDon);
             this.tabPageLapHoaDon.Controls.Add(this.btnLapHoaDon_Them);
             this.tabPageLapHoaDon.Controls.Add(this.tbLapHoaDon_TenKhachHang);
             this.tabPageLapHoaDon.Controls.Add(this.tbLapHoaDon_NgayThanhToan);
@@ -808,13 +808,13 @@
             this.label17.TabIndex = 16;
             this.label17.Text = "Thành tiền";
             // 
-            // dataGridView1
+            // dgv_LapHoaDon
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(35, 185);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(522, 150);
-            this.dataGridView1.TabIndex = 15;
+            this.dgv_LapHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_LapHoaDon.Location = new System.Drawing.Point(35, 185);
+            this.dgv_LapHoaDon.Name = "dgv_LapHoaDon";
+            this.dgv_LapHoaDon.Size = new System.Drawing.Size(522, 150);
+            this.dgv_LapHoaDon.TabIndex = 15;
             // 
             // btnLapHoaDon_Them
             // 
@@ -1697,7 +1697,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvChonPhong_DSPhongTrong)).EndInit();
             this.tabPageLapHoaDon.ResumeLayout(false);
             this.tabPageLapHoaDon.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_LapHoaDon)).EndInit();
             this.panelChucNang.ResumeLayout(false);
             this.panelThongKe.ResumeLayout(false);
             this.tabCon_ThongKe.ResumeLayout(false);
@@ -1809,7 +1809,7 @@
         private System.Windows.Forms.ComboBox cbLapHoaDon_MaPhieuThue;
         private System.Windows.Forms.ComboBox cbLapHoaDon_MaKH;
         private System.Windows.Forms.Button btnLapHoaDon_Them;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_LapHoaDon;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnLapHoaDon_ThanhToan;
         private System.Windows.Forms.TextBox tbLapHoaDon_ThanhTien;
